@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Interview Demo - AI Interview Coach</title>
+  <meta name="description" content="Try our AI-powered interview coaching system with real-time feedback">
+  <meta name="keywords" content="AI interview, mock interview, interview practice, AI feedback">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .video-container {
+      position: relative;
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      margin-bottom: 2rem;
+    }
+    
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .analysis-panel {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .metric-card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #667eea;
+    }
+    
+    .metric-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #667eea;
+    }
+    
+    .start-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .start-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+  </style>
+</head>
+
+<body class="demo-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">AI Interview Coach</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="#" class="active">Demo</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="index.html">Back to Home</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Interview Demo</li>
+          </ol>
+        </nav>
+        <h1>AI Interview Demo</h1>
+        <p>Experience our AI-powered interview coaching system</p>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo section">
+      <div class="container">
+        <div class="demo-container">
+          
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="video-container">
+                <div class="video-placeholder">
+                  <div class="text-center">
+                    <i class="bi bi-camera-video" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                    <h3>Camera Ready</h3>
+                    <p>Click start to begin your mock interview</p>
+                    <button class="start-btn">
+                      <i class="bi bi-play-fill me-2"></i>
+                      Start Interview
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="interview-controls text-center">
+                <button class="btn btn-outline-primary me-2">
+                  <i class="bi bi-mic"></i> Microphone
+                </button>
+                <button class="btn btn-outline-primary me-2">
+                  <i class="bi bi-camera-video"></i> Camera
+                </button>
+                <button class="btn btn-outline-danger">
+                  <i class="bi bi-stop-fill"></i> End Interview
+                </button>
+              </div>
+            </div>
+            
+            <div class="col-lg-4">
+              <div class="analysis-panel">
+                <h4 class="mb-4">
+                  <i class="bi bi-graph-up-arrow text-primary me-2"></i>
+                  Real-time Analysis
+                </h4>
+                
+                <div class="metric-card">
+                  <h6>Confidence Level</h6>
+                  <div class="metric-value">85%</div>
+                  <small class="text-muted">Good eye contact and posture</small>
+                </div>
+                
+                <div class="metric-card">
+                  <h6>Speech Clarity</h6>
+                  <div class="metric-value">92%</div>
+                  <small class="text-muted">Clear pronunciation</small>
+                </div>
+                
+                <div class="metric-card">
+                  <h6>Emotional State</h6>
+                  <div class="metric-value">Calm</div>
+                  <small class="text-muted">Composed and focused</small>
+                </div>
+                
+                <div class="metric-card">
+                  <h6>Response Quality</h6>
+                  <div class="metric-value">Good</div>
+                  <small class="text-muted">Relevant and structured</small>
+                </div>
+                
+                <div class="mt-4">
+                  <h6>Current Question:</h6>
+                  <p class="text-muted">"Tell me about yourself and your background."</p>
+                </div>
+                
+                <div class="mt-4">
+                  <h6>AI Suggestions:</h6>
+                  <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle text-success me-2"></i>Maintain eye contact</li>
+                    <li><i class="bi bi-exclamation-triangle text-warning me-2"></i>Speak a bit slower</li>
+                    <li><i class="bi bi-info-circle text-info me-2"></i>Add specific examples</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row mt-5">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="bi bi-lightbulb text-warning me-2"></i>
+                    How It Works
+                  </h5>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <i class="bi bi-camera-video text-primary" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">Video Analysis</h6>
+                        <p class="small text-muted">AI analyzes facial expressions, eye contact, and body language</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <i class="bi bi-mic text-primary" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">Voice Processing</h6>
+                        <p class="small text-muted">Speech patterns, tone, and clarity are evaluated in real-time</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <i class="bi bi-brain text-primary" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">AI Feedback</h6>
+                        <p class="small text-muted">Comprehensive analysis and personalized improvement suggestions</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative dark-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">AI Interview Coach</span>
+          </a>
+          <p>Master your interview skills with our AI-powered coaching platform that provides real-time feedback on facial expressions, voice tone, and communication skills.</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="#">Demo</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="index.html#features">Facial Analysis</a></li>
+            <li><a href="index.html#features">Voice Analysis</a></li>
+            <li><a href="index.html#features">Language Processing</a></li>
+            <li><a href="index.html#features">Performance Report</a></li>
+            <li><a href="#">AI Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>A108 Adam Street</p>
+          <p>New York, NY 535022</p>
+          <p>United States</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+          <p><strong>Email:</strong> <span>info@aiinterviewcoach.com</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">AI Interview Coach</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Powered by Advanced AI Technology
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Demo functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const startBtn = document.querySelector('.start-btn');
+      const videoPlaceholder = document.querySelector('.video-placeholder');
+      
+      startBtn.addEventListener('click', function() {
+        // Simulate starting interview
+        videoPlaceholder.innerHTML = `
+          <div class="text-center">
+            <div class="spinner-border text-light mb-3" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <h4>Interview in Progress...</h4>
+            <p>AI is analyzing your responses</p>
+          </div>
+        `;
+        
+        // Update metrics periodically to simulate real-time analysis
+        setTimeout(() => {
+          updateMetrics();
+        }, 2000);
+      });
+      
+      function updateMetrics() {
+        const confidence = Math.floor(Math.random() * 20) + 80;
+        const clarity = Math.floor(Math.random() * 15) + 85;
+        
+        document.querySelector('.metric-card:nth-child(1) .metric-value').textContent = confidence + '%';
+        document.querySelector('.metric-card:nth-child(2) .metric-value').textContent = clarity + '%';
+      }
+    });
+  </script>
+
+</body>
+
+</html>

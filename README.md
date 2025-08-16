@@ -1,19 +1,95 @@
-# AI Interview System
+# AI-Powered Interview Coach: Multimodal Emotion & Language-Aware Feedback System
 
-An intelligent interview system that uses Google's Gemini LLM to conduct automated interviews for specific job positions. The system can generate job-specific questions, evaluate responses, and provide comprehensive interview reports.
+An advanced AI interview coaching platform that simulates mock interviews using Large Language Models (LLM) and analyzes candidate performance through Computer Vision, Natural Language Processing, and Deep Learning techniques.
+
+## Project Overview
+
+This system provides comprehensive interview preparation by:
+- **AI Interviewer**: Uses LLM to conduct realistic mock interviews
+- **Facial Expression Analysis**: Computer vision algorithms analyze micro-expressions, confidence, and emotional state
+- **Voice Analysis**: Audio processing evaluates tone, pace, clarity, and stress levels
+- **Language Processing**: NLP assesses communication skills, grammar, and content quality
+- **Real-time Feedback**: Instant performance analysis and improvement suggestions
 
 ## Features
 
-- **Automated Question Generation**: Creates 10-15 tailored interview questions based on job title and experience level
-- **Intelligent Response Evaluation**: Uses AI to score and provide feedback on candidate responses
-- **Comprehensive Reporting**: Generates detailed interview reports with scores and recommendations
-- **Voice Support**: Text-to-Speech and Speech-to-Text capabilities (requires Google Cloud setup)
-- **Multiple Experience Levels**: Supports entry-level, mid-level, and senior-level positions
-- **Data Persistence**: Saves interview data and reports for future reference
+### 🤖 AI-Powered Interview Simulation
+- **Dynamic Question Generation**: Creates job-specific interview questions
+- **Intelligent Response Evaluation**: AI scoring of answers with detailed feedback
+- **Adaptive Difficulty**: Adjusts questions based on candidate responses
+- **Multiple Interview Types**: Technical, behavioral, and situational interviews
 
-## Setup
+### 👁️ Computer Vision Analysis
+- **Facial Expression Recognition**: Real-time emotion detection
+- **Eye Contact Tracking**: Measures engagement and confidence
+- **Posture Analysis**: Body language assessment
+- **Micro-expression Detection**: Subtle emotional cues
 
-### 1. Install Dependencies
+### 🎤 Voice & Speech Analysis  
+- **Tone Analysis**: Emotional state through voice patterns
+- **Speech Clarity**: Pronunciation and articulation assessment
+- **Pace Evaluation**: Speaking speed optimization
+- **Stress Detection**: Voice-based anxiety indicators
+
+### 📝 Natural Language Processing
+- **Content Quality**: Answer relevance and structure
+- **Grammar Analysis**: Language proficiency assessment
+- **Communication Skills**: Clarity and effectiveness measurement
+- **Keyword Recognition**: Industry-specific terminology usage
+
+### 📊 Comprehensive Reporting
+- **Performance Metrics**: Detailed scoring across all dimensions
+- **Visual Analytics**: Charts and graphs showing strengths/weaknesses
+- **Improvement Suggestions**: Personalized coaching recommendations
+- **Progress Tracking**: Performance evolution over time
+
+## Technology Stack
+
+### Frontend
+- **HTML5/CSS3/JavaScript**: Modern web interface
+- **Bootstrap 5**: Responsive design framework
+- **WebRTC**: Real-time audio/video capture
+- **Chart.js**: Interactive performance visualizations
+
+### Backend
+- **Python**: Core application logic
+- **Flask/FastAPI**: Web framework for API endpoints
+- **OpenCV**: Computer vision processing
+- **TensorFlow/PyTorch**: Deep learning models
+- **spaCy/NLTK**: Natural language processing
+
+### AI & ML Models
+- **LLM Integration**: Gemini/GPT for interview generation
+- **Emotion Recognition**: Pre-trained facial expression models
+- **Speech Processing**: Audio analysis algorithms
+- **Sentiment Analysis**: Text emotion classification
+
+## Project Structure
+
+```
+MAJOR-PROJECT/
+├── frontend/                    # Web interface
+│   ├── index.html              # Main landing page
+│   ├── interview-demo.html     # Interactive demo page
+│   ├── assets/                 # Static assets
+│   │   ├── css/               # Stylesheets
+│   │   ├── js/                # JavaScript files
+│   │   ├── img/               # Images and icons
+│   │   └── vendor/            # Third-party libraries
+│   └── forms/                 # Contact forms
+├── src/                        # Backend source code
+│   ├── __init__.py            # Package initialization
+│   ├── LLM_integration.py     # AI model integration
+│   ├── utils.py               # Utility functions
+│   └── vision.py              # Computer vision processing
+├── models/                     # ML model storage
+├── main.py                    # Main application entry point
+├── requirements.txt           # Python dependencies
+├── setup.sh                   # Setup script
+└── README.md                  # Project documentation
+```
+
+## Setup & Installation
 
 ```bash
 pip install -r requirements.txt
