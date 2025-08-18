@@ -1,0 +1,26 @@
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+
+}
+
+.grid #suggestion{ 
+    display: flex;
+    justify-content: center;
+}
+
+.suggestion-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestion-list li {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.suggestion-list li:hover {
+    background-color: #f0f0f0;
+}

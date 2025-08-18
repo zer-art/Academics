@@ -1,0 +1,26 @@
+@import url("root.css");
+
+body{
+    width: 100vw;
+    margin: 20;
+    padding: 0;
+    background-color: var(--bg);
+    color:aliceblue;
+    justify-content: center;
+}
+
+header h1 { 
+    justify-self: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container img { 
+    border-radius: 10px;
+}
+

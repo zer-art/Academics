@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/btn.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Sign language detection using deep learning
+        </h1>
+    </header>
+    <div class="grid">
+        <div class="item">
+            <div class="container">
+                <h2>Predicted Word: <span id="word"></span></h2>
+            <img id="video" src="{% url 'video_feed' %}" width="640" height="480">
+        
+            <br><br>
+            <div class="btns">
+            <button onclick="startCamera()">Start</button>
+            <button onclick="stopCamera()">Stop</button>
+            <button onclick="resetWord()">Reset</button>
+            </div>
+            </div>
+            
+        </div>
+        <div class="item" id="suggestion">
+            <div class="suggest">
+                <h2>Suggestion</h2>
+                <div class="suggestion-list" id="suggestion-list">
+                    <ul id="suggestion-items">
+                        <!-- Suggestions will be dynamically added here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+
+    <script>
+        function startCamera() {
+            fetch('/start/');
+        }
+
+        function stopCamera() {
+            fetch('/stop/');
+        }
+
+        function resetWord() {
+            fetch('/reset/');
+            document.getElementById('word').innerText = "";
+        }
+
+        const fetchInterval = 1000; // Fetch every 1 second
+
+        setInterval(function () {
+            fetch('/word/')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('word').innerText = data.word;
+                });
+        }, fetchInterval);
+
+
+        function fetchSuggestions(word) {
+            fetch(`/suggestions/?word=${word}`)
+                .then(response => response.json())
+                .then(data => {
+                    const suggestionList = document.getElementById('suggestion-items');
+                    suggestionList.innerHTML = ''; // Clear existing suggestions
+                    data.suggestions.forEach(suggestion => {
+                        const li = document.createElement('li');
+                        li.textContent = suggestion;
+                        suggestionList.appendChild(li);
+                    });
+                });
+        }
+
+        // Example: Fetch suggestions for the current word every 2 seconds
+        setInterval(function () {
+            const currentWord = document.getElementById('word').innerText;
+            if (currentWord) {
+                fetchSuggestions(currentWord);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
