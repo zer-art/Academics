@@ -184,15 +184,60 @@ h6 {
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
 
+/* Authentication Buttons */
+.header .auth-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.header .btn-login,
+.header .btn-signup {
+  font-size: 14px;
+  padding: 8px 20px;
+  margin: 0;
+  border-radius: 4px;
+  transition: 0.3s;
+  text-decoration: none;
+  font-weight: 500;
+  border: 2px solid transparent;
+}
+
+.header .btn-login {
+  color: var(--accent-color);
+  background: transparent;
+  border-color: var(--accent-color);
+}
+
+.header .btn-login:hover {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+}
+
+.header .btn-signup {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+}
+
+.header .btn-signup:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;
   }
 
-  .header .btn-getstarted {
+  .header .auth-buttons {
     order: 2;
     margin: 0 15px 0 0;
-    padding: 6px 20px;
+  }
+
+  .header .btn-login,
+  .header .btn-signup {
+    padding: 6px 16px;
+    font-size: 13px;
   }
 
   .header .navmenu {
@@ -324,6 +369,11 @@ h6 {
     left: -100%;
     visibility: visible;
   }
+
+  /* Hide mobile auth items on desktop */
+  .mobile-auth-item {
+    display: none !important;
+  }
 }
 
 /* Navmenu - Mobile */
@@ -335,6 +385,34 @@ h6 {
     margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+  }
+
+  /* Hide desktop auth buttons on mobile */
+  .auth-buttons {
+    display: none !important;
+  }
+
+  /* Show mobile auth items */
+  .mobile-auth-item {
+    display: block !important;
+  }
+
+  /* Style mobile auth items */
+  .mobile-auth-item a {
+    border-radius: 6px;
+    margin: 5px 10px;
+    font-weight: 600;
+  }
+
+  .mobile-auth-item:nth-last-child(2) a {
+    background-color: transparent !important;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color) !important;
+  }
+
+  .mobile-auth-item:last-child a {
+    background-color: var(--accent-color) !important;
+    color: var(--contrast-color) !important;
   }
 
   .navmenu {

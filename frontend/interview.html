@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Interview - AI Interview Coach</title>
+  <meta name="description" content="Try our AI-powered interview coaching system with real-time feedback">
+  <meta name="keywords" content="AI interview, mock interview, interview practice, AI feedback">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .video-container {
+      position: relative;
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      margin-bottom: 1rem;
+    }
+    
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    
+    .user-video {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .ai-video {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    }
+    
+    .video-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+    }
+    
+    /* AI Avatar Styles */
+    .ai-interviewer {
+      text-align: center;
+      color: white;
+    }
+    
+    .ai-avatar {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1rem;
+    }
+    
+    .ai-face {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      margin: 0 auto;
+      position: relative;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    
+    .ai-eye {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 25px;
+      animation: blink 3s infinite;
+    }
+    
+    .left-eye {
+      left: 20px;
+    }
+    
+    .right-eye {
+      right: 20px;
+    }
+    
+    .ai-mouth {
+      width: 20px;
+      height: 10px;
+      border: 2px solid white;
+      border-top: none;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: talk 2s infinite;
+    }
+    
+    /* Speaking Animation */
+    .speaking-indicator {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2px;
+    }
+    
+    .wave {
+      width: 3px;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 2px;
+      animation: wave 1s infinite;
+    }
+    
+    .wave1 { animation-delay: 0s; }
+    .wave2 { animation-delay: 0.1s; }
+    .wave3 { animation-delay: 0.2s; }
+    .wave4 { animation-delay: 0.3s; }
+    
+    /* Animations */
+    @keyframes blink {
+      0%, 90%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.1); }
+    }
+    
+    @keyframes talk {
+      0%, 100% { transform: translateX(-50%) scaleY(1); }
+      50% { transform: translateX(-50%) scaleY(1.5); }
+    }
+    
+    @keyframes wave {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(2); }
+    }
+    
+    .analysis-panel {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .metric-card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #667eea;
+    }
+    
+    .metric-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #667eea;
+    }
+    
+    .start-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .start-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Speaking state */
+    .ai-video.speaking .wave {
+      animation-duration: 0.5s;
+    }
+    
+    .ai-video.speaking .ai-mouth {
+      animation-duration: 0.8s;
+    }
+    
+    /* Question and Answer Panels */
+    .question-panel, .answer-panel {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      height: 100%;
+      margin-bottom: 2rem;
+    }
+    
+    .panel-title {
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #f8f9fa;
+    }
+    
+    .question-content, .answer-content {
+      min-height: 120px;
+    }
+    
+    .current-question {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #2c3e50;
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #28a745;
+      margin: 0;
+    }
+    
+    .user-answer {
+      font-size: 1rem;
+      color: #495057;
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #007bff;
+      margin: 0 0 1rem 0;
+      min-height: 80px;
+    }
+    
+    .answer-timer {
+      text-align: right;
+    }
+    
+    .timer {
+      font-weight: 600;
+      color: #007bff;
+    }
+    
+    /* Interview Controls */
+    .interview-controls {
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    
+    .btn-outline-primary, .btn-outline-danger {
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body class="demo-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">AI Interview Coach</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="#" class="active">Interview</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="index.html">Back to Home</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Interview Demo</li>
+          </ol>
+        </nav>
+        <h1>AI Interview Demo</h1>
+        <p>Experience our AI-powered interview coaching system</p>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo section">
+      <div class="container">
+        <div class="demo-container">
+          
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- User Video Container -->
+              <div class="video-container mb-3">
+                <div class="video-placeholder user-video">
+                  <div class="text-center">
+                    <i class="bi bi-camera-video" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                    <h3>Your Camera</h3>
+                    <p>Click start to begin your mock interview</p>
+                    <button class="start-btn">
+                      <i class="bi bi-play-fill me-2"></i>
+                      Start Interview
+                    </button>
+                  </div>
+                </div>
+                <div class="video-label">
+                  <span class="badge bg-primary">You</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-6">
+              <!-- AI Interviewer Video Container -->
+              <div class="video-container mb-3">
+                <div class="video-placeholder ai-video">
+                  <div class="ai-interviewer">
+                    <div class="ai-avatar">
+                      <div class="ai-face">
+                        <div class="ai-eye left-eye"></div>
+                        <div class="ai-eye right-eye"></div>
+                        <div class="ai-mouth"></div>
+                      </div>
+                      <div class="speaking-indicator">
+                        <div class="wave wave1"></div>
+                        <div class="wave wave2"></div>
+                        <div class="wave wave3"></div>
+                        <div class="wave wave4"></div>
+                      </div>
+                    </div>
+                    <h4 class="mt-3">AI Interviewer</h4>
+                    <p class="ai-status">Ready to start interview</p>
+                  </div>
+                </div>
+                <div class="video-label">
+                  <span class="badge bg-success">AI Assistant</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Interview Controls -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="interview-controls text-center">
+                <button class="btn btn-outline-primary me-2">
+                  <i class="bi bi-mic"></i> Microphone
+                </button>
+                <button class="btn btn-outline-primary me-2">
+                  <i class="bi bi-camera-video"></i> Camera
+                </button>
+                <button class="btn btn-outline-danger">
+                  <i class="bi bi-stop-fill"></i> End Interview
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Question and Answer Section -->
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="question-panel">
+                <h5 class="panel-title">
+                  <i class="bi bi-chat-quote text-success me-2"></i>
+                  Current Question
+                </h5>
+                <div class="question-content">
+                  <p class="current-question">"Tell me about yourself and your background."</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-6">
+              <div class="answer-panel">
+                <h5 class="panel-title">
+                  <i class="bi bi-mic text-primary me-2"></i>
+                  Your Answer
+                </h5>
+                <div class="answer-content">
+                  <p class="user-answer">Listening for your response...</p>
+                  <div class="answer-timer">
+                    <small class="text-muted">Response time: <span class="timer">0:00</span></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row mt-5">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <i class="bi bi-lightbulb text-warning me-2"></i>
+                    How It Works
+                  </h5>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <i class="bi bi-camera-video text-primary" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">Video Analysis</h6>
+                        <p class="small text-muted">AI analyzes facial expressions, eye contact, and body language</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <i class="bi bi-mic text-primary" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">Voice Processing</h6>
+                        <p class="small text-muted">Speech patterns, tone, and clarity are evaluated in real-time</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <i class="bi bi-brain text-primary" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">AI Feedback</h6>
+                        <p class="small text-muted">Comprehensive analysis and personalized improvement suggestions</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative dark-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">AI Interview Coach</span>
+          </a>
+          <p>Master your interview skills with our AI-powered coaching platform that provides real-time feedback on facial expressions, voice tone, and communication skills.</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="#">Demo</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="index.html#features">Facial Analysis</a></li>
+            <li><a href="index.html#features">Voice Analysis</a></li>
+            <li><a href="index.html#features">Language Processing</a></li>
+            <li><a href="index.html#features">Performance Report</a></li>
+            <li><a href="#">AI Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>A108 Adam Street</p>
+          <p>New York, NY 535022</p>
+          <p>United States</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+          <p><strong>Email:</strong> <span>info@aiinterviewcoach.com</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">AI Interview Coach</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Powered by Advanced AI Technology
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Demo functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const startBtn = document.querySelector('.start-btn');
+      const userVideoPlaceholder = document.querySelector('.user-video');
+      const aiVideoPlaceholder = document.querySelector('.ai-video');
+      const aiStatus = document.querySelector('.ai-status');
+      const currentQuestion = document.querySelector('.current-question');
+      const userAnswer = document.querySelector('.user-answer');
+      const timer = document.querySelector('.timer');
+      
+      const questions = [
+        "Tell me about yourself and your background.",
+        "What are your greatest strengths?",
+        "Describe a challenging situation you faced at work.",
+        "Where do you see yourself in 5 years?",
+        "Why do you want to work for our company?"
+      ];
+      
+      const sampleAnswers = [
+        "I'm a software engineer with 3 years of experience in web development. I have a passion for creating user-friendly applications and solving complex problems through clean, efficient code.",
+        "My greatest strength is my ability to learn quickly and adapt to new technologies. I'm also very detail-oriented and work well in collaborative team environments.",
+        "In my previous role, I had to debug a critical system failure under tight deadlines. I systematically analyzed the code, identified the root cause, and implemented a fix that prevented future occurrences.",
+        "In 5 years, I see myself as a senior developer leading a team and mentoring junior developers. I'd like to contribute to architectural decisions and help shape the technical direction of projects.",
+        "I'm excited about your company's innovative approach to technology and your commitment to continuous learning. The collaborative culture and opportunities for growth align perfectly with my career goals."
+      ];
+      
+      let currentQuestionIndex = 0;
+      let interviewActive = false;
+      let responseTimer = 0;
+      let timerInterval;
+      
+      startBtn.addEventListener('click', function() {
+        if (!interviewActive) {
+          startInterview();
+        }
+      });
+      
+      function startInterview() {
+        interviewActive = true;
+        
+        // Update user video
+        userVideoPlaceholder.innerHTML = `
+          <div class="text-center">
+            <div class="spinner-border text-light mb-3" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <h4>Interview in Progress...</h4>
+            <p>AI is analyzing your responses</p>
+          </div>
+        `;
+        
+        // Activate AI interviewer
+        aiStatus.textContent = "Asking question...";
+        aiVideoPlaceholder.classList.add('speaking');
+        
+        // Start question cycle
+        setTimeout(() => {
+          askNextQuestion();
+        }, 2000);
+      }
+      
+      function askNextQuestion() {
+        if (currentQuestionIndex < questions.length) {
+          // AI speaks
+          aiStatus.textContent = "Speaking...";
+          aiVideoPlaceholder.classList.add('speaking');
+          
+          // Update question text with typing effect
+          typeQuestion(questions[currentQuestionIndex]);
+          
+          // Reset answer section
+          userAnswer.textContent = "Listening for your response...";
+          resetTimer();
+          
+          setTimeout(() => {
+            // AI stops speaking and waits for response
+            aiStatus.textContent = "Listening to your response...";
+            aiVideoPlaceholder.classList.remove('speaking');
+            
+            // Start response timer
+            startResponseTimer();
+            
+            // Simulate user response after 3 seconds
+            setTimeout(() => {
+              simulateUserResponse();
+            }, 3000);
+            
+            // Next question after 10 seconds
+            setTimeout(() => {
+              currentQuestionIndex++;
+              askNextQuestion();
+            }, 10000);
+          }, 3000);
+        } else {
+          // Interview complete
+          aiStatus.textContent = "Interview completed!";
+          aiVideoPlaceholder.classList.remove('speaking');
+          currentQuestion.textContent = "Thank you for completing the interview. Generating your report...";
+          userAnswer.textContent = "Interview session completed. Thank you for your time!";
+          clearInterval(timerInterval);
+        }
+      }
+      
+      function typeQuestion(question) {
+        let i = 0;
+        currentQuestion.textContent = "";
+        const typingSpeed = 50;
+        
+        function type() {
+          if (i < question.length) {
+            currentQuestion.textContent += question.charAt(i);
+            i++;
+            setTimeout(type, typingSpeed);
+          }
+        }
+        type();
+      }
+      
+      function simulateUserResponse() {
+        if (currentQuestionIndex < sampleAnswers.length) {
+          typeAnswer(sampleAnswers[currentQuestionIndex]);
+        }
+      }
+      
+      function typeAnswer(answer) {
+        let i = 0;
+        userAnswer.textContent = "";
+        const typingSpeed = 30;
+        
+        function type() {
+          if (i < answer.length) {
+            userAnswer.textContent += answer.charAt(i);
+            i++;
+            setTimeout(type, typingSpeed);
+          }
+        }
+        type();
+      }
+      
+      function startResponseTimer() {
+        responseTimer = 0;
+        timerInterval = setInterval(() => {
+          responseTimer++;
+          const minutes = Math.floor(responseTimer / 60);
+          const seconds = responseTimer % 60;
+          timer.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }, 1000);
+      }
+      
+      function resetTimer() {
+        clearInterval(timerInterval);
+        responseTimer = 0;
+        timer.textContent = "0:00";
+      }
+      
+      // Add click to restart functionality
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn-outline-danger')) {
+          // Reset interview
+          interviewActive = false;
+          currentQuestionIndex = 0;
+          clearInterval(timerInterval);
+          
+          userVideoPlaceholder.innerHTML = `
+            <div class="text-center">
+              <i class="bi bi-camera-video" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+              <h3>Your Camera</h3>
+              <p>Click start to begin your mock interview</p>
+              <button class="start-btn">
+                <i class="bi bi-play-fill me-2"></i>
+                Start Interview
+              </button>
+            </div>
+          `;
+          
+          aiStatus.textContent = "Ready to start interview";
+          aiVideoPlaceholder.classList.remove('speaking');
+          currentQuestion.textContent = '"Tell me about yourself and your background."';
+          userAnswer.textContent = "Listening for your response...";
+          resetTimer();
+          
+          // Re-attach event listener to new start button
+          const newStartBtn = document.querySelector('.start-btn');
+          newStartBtn.addEventListener('click', function() {
+            if (!interviewActive) {
+              startInterview();
+            }
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
