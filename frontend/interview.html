@@ -272,10 +272,68 @@
       padding: 0.75rem 1.5rem;
       font-weight: 500;
     }
+    
+    /* Authentication loading screen */
+    .auth-loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #0ea5e9, #06b6d4, #10b981, #059669);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: white;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .auth-loading.hidden {
+      display: none;
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .loading-content h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 
 <body class="demo-page">
+
+  <!-- Authentication Loading Screen -->
+  <div id="authLoading" class="auth-loading">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <h2>Verifying Authentication</h2>
+      <p>Please wait while we check your credentials...</p>
+    </div>
+  </div>
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
@@ -533,8 +591,99 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    // Demo functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    // Authentication check
+    const API_BASE = 'http://localhost:8000';
+    
+    // Check if user is authenticated before loading interview page
+    async function checkAuthentication() {
+      const token = localStorage.getItem('auth_token');
+      
+      if (!token) {
+        // No token found, redirect to auth page
+        window.location.href = '/auth';
+        return false;
+      }
+      
+      try {
+        // Verify token with backend
+        const response = await fetch(`${API_BASE}/auth/me?token=${token}`);
+        
+        if (!response.ok) {
+          // Token is invalid, remove it and redirect to auth
+          localStorage.removeItem('auth_token');
+          window.location.href = '/auth';
+          return false;
+        }
+        
+        const user = await response.json();
+        console.log('User authenticated:', user);
+        
+        // Hide loading screen
+        const loadingScreen = document.getElementById('authLoading');
+        if (loadingScreen) {
+          loadingScreen.classList.add('hidden');
+        }
+        
+        // Optional: Display user info in the header
+        displayUserInfo(user);
+        
+        return true;
+      } catch (error) {
+        console.error('Authentication check failed:', error);
+        localStorage.removeItem('auth_token');
+        window.location.href = '/auth';
+        return false;
+      }
+    }
+    
+    // Display user info in the interface
+    function displayUserInfo(user) {
+      // Create a user info display if it doesn't exist
+      const existingUserInfo = document.querySelector('.user-info-display');
+      if (!existingUserInfo) {
+        const userInfoDiv = document.createElement('div');
+        userInfoDiv.className = 'user-info-display';
+        userInfoDiv.style.cssText = `
+          position: fixed;
+          top: 10px;
+          right: 10px;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 10px 15px;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          font-size: 14px;
+          z-index: 1000;
+        `;
+        userInfoDiv.innerHTML = `
+          <strong>Welcome, ${user.name}</strong><br>
+          <small>${user.email}</small><br>
+          <button onclick="logout()" style="margin-top: 5px; padding: 2px 8px; font-size: 12px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">Logout</button>
+        `;
+        document.body.appendChild(userInfoDiv);
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      localStorage.removeItem('auth_token');
+      window.location.href = '/auth';
+    }
+    
+    // Initialize authentication check
+    document.addEventListener('DOMContentLoaded', async function() {
+      // First check authentication
+      const isAuthenticated = await checkAuthentication();
+      
+      if (!isAuthenticated) {
+        return; // Will be redirected to auth page
+      }
+      
+      // If authenticated, continue with the interview page functionality
+      initializeInterviewPage();
+    });
+    
+    // Interview page functionality (moved to separate function)
+    function initializeInterviewPage() {
       const startBtn = document.querySelector('.start-btn');
       const userVideoPlaceholder = document.querySelector('.user-video');
       const aiVideoPlaceholder = document.querySelector('.ai-video');
@@ -723,7 +872,7 @@
           });
         }
       });
-    });
+    } // End of initializeInterviewPage function
   </script>
 
 </body>

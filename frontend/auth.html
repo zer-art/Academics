@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Authentication - Aivox.io</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    
+    .auth-container {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(-45deg, #0ea5e9, #06b6d4, #10b981, #059669, #3b82f6, #1d4ed8);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    /* Animated floating particles */
+    .auth-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 60% 70%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+      animation: float 20s ease-in-out infinite;
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    .auth-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 
+        0 20px 40px rgba(0,0,0,0.1),
+        0 0 0 1px rgba(16, 185, 129, 0.1);
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      z-index: 10;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .auth-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 25px 50px rgba(0,0,0,0.15),
+        0 0 0 1px rgba(14, 165, 233, 0.2);
+    }
+    
+    .logo img {
+      height: 60px;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));
+    }
+    
+    .auth-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+      background: linear-gradient(135deg, #0ea5e9 0%, #10b981 50%, #059669 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .auth-subtitle {
+      color: #475569;
+      margin-bottom: 32px;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+    
+    .social-btn {
+      width: 100%;
+      padding: 16px 24px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .social-btn:hover::before {
+      left: 100%;
+    }
+    
+    .google-btn {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: white;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+    }
+    
+    .google-btn:hover {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+    }
+    
+    .github-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+    
+    .github-btn:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+    }
+    
+    .social-btn i {
+      margin-right: 12px;
+      font-size: 20px;
+    }
+    
+    .user-info {
+      display: none;
+      background: linear-gradient(135deg, #f0fdfa, #ecfdf5);
+      padding: 24px;
+      border-radius: 16px;
+      margin-top: 24px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    
+    .logout-btn {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .logout-btn:hover {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+    }
+    
+    .loading {
+      display: none;
+      margin: 24px 0;
+    }
+    
+    .spinner-border {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-width: 3px;
+      border-color: #10b981;
+      border-right-color: transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #10b981);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0284c7, #059669);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+      color: white;
+    }
+
+    /* Loading animation for auth status */
+    .loading p {
+      color: #059669;
+      font-weight: 500;
+    }
+
+    /* Enhanced user details styling */
+    #userDetails p {
+      margin-bottom: 8px;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    #userDetails strong {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    /* Welcome message styling */
+    .user-info h5 {
+      color: #047857;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .auth-card {
+        width: 95%;
+        padding: 32px 24px;
+        max-height: 95vh;
+      }
+      
+      .auth-title {
+        font-size: 1.8rem;
+      }
+      
+      .social-btn {
+        padding: 14px 20px;
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .auth-card {
+        width: 98%;
+        padding: 24px 16px;
+      }
+      
+      .auth-title {
+        font-size: 1.6rem;
+      }
+      
+      .logo img {
+        height: 50px;
+      }
+    }
+
+    /* Additional floating elements */
+    .auth-container::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 25s ease-in-out infinite reverse;
+    }
+
+    /* Scrollbar styling for auth-card if needed */
+    .auth-card::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .auth-card::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+
+    .auth-card::-webkit-scrollbar-thumb {
+      background: rgba(16, 185, 129, 0.3);
+      border-radius: 3px;
+    }
+
+    .auth-card::-webkit-scrollbar-thumb:hover {
+      background: rgba(16, 185, 129, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="logo">
+        <img src="assets/img/logo.webp" alt="Aivox.io">
+      </div>
+      
+      <h1 class="auth-title">Welcome to Aivox.io</h1>
+      <p class="auth-subtitle">Sign in to continue to your account</p>
+      
+      <div id="loginSection">
+        <a href="#" class="social-btn google-btn" id="googleLogin">
+          <i class="bi bi-google"></i>
+          Continue with Google
+        </a>
+        
+        <a href="#" class="social-btn github-btn" id="githubLogin">
+          <i class="bi bi-github"></i>
+          Continue with GitHub
+        </a>
+      </div>
+      
+      <div class="loading" id="loading">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-3">Authenticating...</p>
+      </div>
+      
+      <div class="user-info" id="userInfo">
+        <h5 class="mb-3">Welcome back!</h5>
+        <div id="userDetails"></div>
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+        <br><br>
+        <a href="index.html" class="btn btn-primary">Go to Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const API_BASE = 'http://localhost:8000';
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      checkAuthentication();
+      handleCallback();
+    });
+    
+    function checkAuthentication() {
+      const token = localStorage.getItem('auth_token');
+      if (token) fetchUserInfo(token);
+    }
+    
+    function handleCallback() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      
+      if (token) {
+        localStorage.setItem('auth_token', token);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        fetchUserInfo(token);
+      }
+    }
+    
+    async function fetchUserInfo(token) {
+      try {
+        showLoading(true);
+        const response = await fetch(`${API_BASE}/auth/me?token=${token}`);
+        
+        if (response.ok) {
+          const user = await response.json();
+          showUserInfo(user);
+        } else {
+          localStorage.removeItem('auth_token');
+          showLogin();
+        }
+      } catch (error) {
+        localStorage.removeItem('auth_token');
+        showLogin();
+      } finally {
+        showLoading(false);
+      }
+    }
+    
+    function showUserInfo(user) {
+      document.getElementById('loginSection').style.display = 'none';
+      document.getElementById('userInfo').style.display = 'block';
+      
+      document.getElementById('userDetails').innerHTML = `
+        <p><strong>Name:</strong> ${user.name}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+        <p><strong>Provider:</strong> ${user.provider.toUpperCase()}</p>
+      `;
+    }
+    
+    function showLogin() {
+      document.getElementById('loginSection').style.display = 'block';
+      document.getElementById('userInfo').style.display = 'none';
+    }
+    
+    function showLoading(show) {
+      document.getElementById('loading').style.display = show ? 'block' : 'none';
+    }
+    
+    document.getElementById('googleLogin').addEventListener('click', async function(e) {
+      e.preventDefault();
+      try {
+        showLoading(true);
+        const response = await fetch(`${API_BASE}/auth/google/login`);
+        const data = await response.json();
+        window.location.href = data.auth_url;
+      } catch (error) {
+        showLoading(false);
+        alert('Login failed. Please try again.');
+      }
+    });
+    
+    document.getElementById('githubLogin').addEventListener('click', async function(e) {
+      e.preventDefault();
+      try {
+        showLoading(true);
+        const response = await fetch(`${API_BASE}/auth/github/login`);
+        const data = await response.json();
+        window.location.href = data.auth_url;
+      } catch (error) {
+        showLoading(false);
+        alert('Login failed. Please try again.');
+      }
+    });
+    
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('auth_token');
+      showLogin();
+    });
+  </script>
+</body>
+</html>
