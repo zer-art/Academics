@@ -1,9 +1,17 @@
 # FastAPI and web server
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
+jinja2==3.1.2
 
 # Environment and configuration
 python-dotenv==1.0.0
+
+# Computer Vision and AI
+deepface==0.0.79
+opencv-python==4.8.1.78
+numpy==1.24.3
+pillow==10.0.1
+tf-keras==2.15.0
 
 # HTTP client for OAuth requests
 httpx==0.25.2
