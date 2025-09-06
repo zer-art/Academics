@@ -6,53 +6,24 @@ jinja2==3.1.2
 # Environment and configuration
 python-dotenv==1.0.0
 
+# Data validation and serialization
+pydantic==2.5.0
+
 # Computer Vision and AI
 deepface==0.0.79
 opencv-python==4.8.1.78
 numpy==1.24.3
 pillow==10.0.1
-tf-keras==2.15.0
-
-# HTTP client for OAuth requests
-httpx==0.25.2
-
-# Authentication and security
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
-bcrypt==4.1.2
-
-# Data validation and serialization (compatible with LangChain)
-pydantic==2.5.0
-
-# File upload support
-python-multipart==0.0.6
 
 # AI and ML dependencies
 tensorflow==2.15.0
+tf-keras==2.15.0
 langchain==0.1.0
-langchain-openai==0.0.2
-langchain-community==0.0.10
+langchain-google-genai==0.0.6
 
-# Computer Vision
-opencv-python==4.8.1.78
-opencv-contrib-python==4.8.1.78
-
-# Additional ML/AI utilities
-numpy==1.24.3  # Compatible with TensorFlow 2.15
-pandas==2.0.3  # Data manipulation
-pillow==10.0.1  # Image processing
-matplotlib==3.7.2  # Plotting and visualization
-
-# N8N integration (N8N running in Docker)
-requests==2.31.0  # For HTTP API calls to N8N Docker container
-aiohttp==3.9.1  # Async HTTP client for better FastAPI integration
-
-# Scientific computing
-scipy==1.11.3
-
-# Optional: GPU support for TensorFlow (uncomment if you have CUDA)
-# tensorflow-gpu==2.15.0  # Use instead of tensorflow if you have GPU
-
-# Production utilities
-aiofiles==23.2.1  # Async file operations
-python-json-logger==2.0.7  # Structured logging
+# Speech Recognition and Text-to-Speech
+vosk==0.3.45
+sounddevice==0.4.6
+soundfile==0.12.1
+gtts==2.4.0
+pygame==2.5.2

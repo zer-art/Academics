@@ -29,4 +29,10 @@ class Config:
     GITHUB_AUTHORIZE_URL = "https://github.com/login/oauth/authorize"
     GITHUB_TOKEN_URL = "https://github.com/login/oauth/access_token"
     GITHUB_USER_INFO_URL = "https://api.github.com/user"
+
+    # llm settings
+    GEMINI = os.getenv("GEMINI")
+
+# Make GEMINI available as module-level variable for imports
+GEMINI = Config.GEMINI
     
