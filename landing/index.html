@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>AI Interview Coach - Master Your Interview Skills</title>
+  <meta name="description" content="AI-Powered Interview Coach with multimodal emotion and language-aware feedback system">
+  <meta name="keywords" content="AI interview coach, mock interview, emotion analysis, interview preparation, AI feedback">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Landify
+  * Template URL: https://bootstrapmade.com/landify-bootstrap-landing-page-template/
+  * Updated: Aug 04 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.webp" alt=""> -->
+        <h1 class="sitename">AI Interview Coach</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="mobile-auth-item"><a href="/auth">Login</a></li>
+          <li class="mobile-auth-item"><a href="/auth">Sign Up</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="auth-buttons">
+        <a class="btn-login" href="/auth">Login</a>
+        <a class="btn-signup" href="/auth">Sign Up</a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-delay="200">
+            <div class="hero-content">
+              <h1 class="hero-title">Master Your Interview Skills with AI-Powered Coaching</h1>
+              <p class="hero-description">Experience realistic mock interviews with our AI interviewer that analyzes your facial expressions, voice tone, and body language to provide comprehensive feedback on your performance.</p>
+              <div class="hero-actions">
+                <a href="#" class="btn-primary" id="startInterviewBtn">Start Mock Interview</a>
+                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn-secondary glightbox">
+                  <i class="bi bi-play-circle"></i>
+                  <span>Watch Demo</span>
+                </a>
+              </div>
+              <div class="hero-stats">
+                <div class="stat-item">
+                  <span class="stat-number">1000+</span>
+                  <span class="stat-label">Interviews Conducted</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">95%</span>
+                  <span class="stat-label">Success Rate</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">AI</span>
+                  <span class="stat-label">Powered Analysis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="300">
+            <div class="hero-visual">
+              <div class="hero-image-wrapper">
+                <img src="assets/img/illustration/illustration-15.webp" class="img-fluid hero-image" alt="Hero Image">
+                <div class="floating-elements">
+                  <div class="floating-card card-1">
+                    <i class="bi bi-camera-video"></i>
+                    <span>Video Analysis</span>
+                  </div>
+                  <div class="floating-card card-2">
+                    <i class="bi bi-mic"></i>
+                    <span>Voice Analysis</span>
+                  </div>
+                  <div class="floating-card card-3">
+                    <i class="bi bi-brain"></i>
+                    <span>AI Feedback</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+            <div class="content-wrapper">
+              <div class="section-header">
+                <span class="section-badge">ABOUT AI INTERVIEW COACH</span>
+                <h2>Revolutionizing Interview Preparation with AI Technology</h2>
+              </div>
+
+              <p class="lead-text">Our AI-powered platform combines advanced computer vision, natural language processing, and deep learning to provide comprehensive interview coaching that analyzes every aspect of your performance.</p>
+
+              <p class="description-text">Using cutting-edge technology, we analyze facial expressions, voice patterns, body language, and speech content to give you detailed feedback on emotional state, confidence levels, communication skills, and overall interview performance.</p>
+
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <div class="stat-number">5000+</div>
+                  <div class="stat-label">Mock Interviews</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">95%</div>
+                  <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">Real-time</div>
+                  <div class="stat-label">AI Analysis</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">Multi-modal</div>
+                  <div class="stat-label">Feedback System</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+            <div class="visual-section">
+              <div class="main-image-container">
+                <img src="assets/img/about/about-8.webp" alt="Professional team collaboration" class="img-fluid main-visual">
+                <div class="overlay-card">
+                  <div class="card-content">
+                    <h4>AI-Powered Analysis</h4>
+                    <p>Advanced computer vision and NLP algorithms analyze your performance in real-time.</p>
+                    <div class="card-icon">
+                      <i class="bi bi-brain"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="secondary-images">
+                <div class="row g-3">
+                  <div class="col-6">
+                    <img src="assets/img/about/about-11.webp" alt="Team meeting" class="img-fluid secondary-img">
+                  </div>
+                  <div class="col-6">
+                    <img src="assets/img/about/about-5.webp" alt="Office workspace" class="img-fluid secondary-img">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-12" data-aos="fade-up" data-aos-delay="400">
+            <div class="features-section">
+              <div class="row gy-4">
+                <div class="col-md-4">
+                  <div class="feature-box">
+                    <div class="feature-icon">
+                      <i class="bi bi-camera-video"></i>
+                    </div>
+                    <h5>Facial Expression Analysis</h5>
+                    <p>Advanced computer vision technology analyzes your facial expressions and micro-expressions during interviews.</p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="feature-box">
+                    <div class="feature-icon">
+                      <i class="bi bi-mic"></i>
+                    </div>
+                    <h5>Voice Tone Analysis</h5>
+                    <p>AI-powered voice analysis evaluates your tone, pace, clarity, and emotional state through speech patterns.</p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="feature-box">
+                    <div class="feature-icon">
+                      <i class="bi bi-chat-text"></i>
+                    </div>
+                    <h5>Language Analysis</h5>
+                    <p>Natural language processing evaluates your communication skills, grammar, and content quality.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span class="description-title">Features</span>
+        <h2>AI-Powered Interview Analysis</h2>
+        <p>Comprehensive multimodal analysis combining computer vision, natural language processing, and deep learning</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="tabs-wrapper">
+          <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
+
+            <li class="nav-item">
+              <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+                <div class="tab-icon">
+                  <i class="bi bi-camera-video"></i>
+                </div>
+                <div class="tab-content">
+                  <h5>Facial Analysis</h5>
+                  <span>Expression recognition</span>
+                </div>
+              </a>
+            </li><!-- End tab nav item -->
+
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+                <div class="tab-icon">
+                  <i class="bi bi-mic"></i>
+                </div>
+                <div class="tab-content">
+                  <h5>Voice Analysis</h5>
+                  <span>Tone & emotion detection</span>
+                </div>
+              </a>
+            </li><!-- End tab nav item -->
+
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+                <div class="tab-icon">
+                  <i class="bi bi-chat-text"></i>
+                </div>
+                <div class="tab-content">
+                  <h5>Language Processing</h5>
+                  <span>Content & grammar analysis</span>
+                </div>
+              </a>
+            </li><!-- End tab nav item -->
+
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
+                <div class="tab-icon">
+                  <i class="bi bi-graph-up-arrow"></i>
+                </div>
+                <div class="tab-content">
+                  <h5>Performance Report</h5>
+                  <span>Detailed feedback</span>
+                </div>
+              </a>
+            </li><!-- End tab nav item -->
+
+          </ul>
+
+          <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="tab-pane fade active show" id="features-tab-1">
+              <div class="row align-items-center">
+
+                <div class="col-lg-5">
+                  <div class="content-wrapper">
+                    <div class="icon-badge">
+                      <i class="bi bi-camera-video"></i>
+                    </div>
+                    <h3>Facial Expression Analysis</h3>
+                    <p>Advanced computer vision algorithms analyze micro-expressions, eye contact, and facial movements to assess confidence, nervousness, and emotional state during interviews.</p>
+
+                    <div class="feature-grid">
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Real-time emotion detection</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Confidence level assessment</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Eye contact analysis</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Et harum quidem rerum facilis est et expedita</span>
+                      </div>
+                    </div>
+
+                    <div class="stats-row">
+                      <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Uptime</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Users</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                      </div>
+                    </div>
+
+                    <a href="#" class="btn-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                  </div>
+                </div>
+
+                <div class="col-lg-7">
+                  <div class="visual-content">
+                    <div class="main-image">
+                      <img src="assets/img/features/features-4.webp" alt="" class="img-fluid">
+                      <div class="floating-card">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        <div class="card-content">
+                          <span>Performance</span>
+                          <strong>+85% Improvement</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End tab content item -->
+
+            <div class="tab-pane fade" id="features-tab-2">
+              <div class="row align-items-center">
+
+                <div class="col-lg-5">
+                  <div class="content-wrapper">
+                    <div class="icon-badge">
+                      <i class="bi bi-mic"></i>
+                    </div>
+                    <h3>Voice Tone Analysis</h3>
+                    <p>Sophisticated audio processing algorithms analyze voice patterns, tone variations, pace, and clarity to evaluate emotional state and communication effectiveness.</p>
+
+                    <div class="feature-grid">
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Emotion detection through voice patterns</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Speech clarity and pace analysis</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Confidence assessment via vocal cues</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Stress level detection</span>
+                      </div>
+                    </div>
+
+                    <div class="stats-row">
+                      <div class="stat-item">
+                        <div class="stat-number">256-bit</div>
+                        <div class="stat-label">Encryption</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="stat-number">ISO</div>
+                        <div class="stat-label">Certified</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="stat-number">GDPR</div>
+                        <div class="stat-label">Compliant</div>
+                      </div>
+                    </div>
+
+                    <a href="#" class="btn-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                  </div>
+                </div>
+
+                <div class="col-lg-7">
+                  <div class="visual-content">
+                    <div class="main-image">
+                      <img src="assets/img/features/features-2.webp" alt="" class="img-fluid">
+                      <div class="floating-card">
+                        <i class="bi bi-shield-check"></i>
+                        <div class="card-content">
+                          <span>Security</span>
+                          <strong>Military Grade</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End tab content item -->
+
+            <div class="tab-pane fade" id="features-tab-3">
+              <div class="row align-items-center">
+
+                <div class="col-lg-5">
+                  <div class="content-wrapper">
+                    <div class="icon-badge">
+                      <i class="bi bi-lightning-charge"></i>
+                    </div>
+                    <h3>Lightning Performance</h3>
+                    <p>Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid ex ea commodi consequatur quis autem vel.</p>
+
+                    <div class="feature-grid">
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Duis aute irure dolor in reprehenderit in voluptate</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Excepteur sint occaecat cupidatat non proident</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Sunt in culpa qui officia deserunt mollit</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Sed ut perspiciatis unde omnis iste natus</span>
+                      </div>
+                    </div>
+
+                    <div class="stats-row">
+                      <div class="stat-item">
+                        <div class="stat-number">0.5s</div>
+                        <div class="stat-label">Load Time</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Optimized</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="stat-number">CDN</div>
+                        <div class="stat-label">Global</div>
+                      </div>
+                    </div>
+
+                    <a href="#" class="btn-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                  </div>
+                </div>
+
+                <div class="col-lg-7">
+                  <div class="visual-content">
+                    <div class="main-image">
+                      <img src="assets/img/features/features-6.webp" alt="" class="img-fluid">
+                      <div class="floating-card">
+                        <i class="bi bi-speedometer2"></i>
+                        <div class="card-content">
+                          <span>Speed</span>
+                          <strong>Ultra Fast</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End tab content item -->
+
+            <div class="tab-pane fade" id="features-tab-4">
+              <div class="row align-items-center">
+
+                <div class="col-lg-5">
+                  <div class="content-wrapper">
+                    <div class="icon-badge">
+                      <i class="bi bi-heart-pulse"></i>
+                    </div>
+                    <h3>Premium Support</h3>
+                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+
+                    <div class="feature-grid">
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Neque porro quisquam est qui dolorem ipsum</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Quia dolor sit amet consectetur adipisci velit</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Sed quia non numquam eius modi tempora</span>
+                      </div>
+                      <div class="feature-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Incidunt ut labore et dolore magnam aliquam</span>
+                      </div>
+                    </div>
+
+                    <div class="stats-row">
+                      <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Available</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="stat-number">2min</div>
+                        <div class="stat-label">Response</div>
+                      </div>
+                      <div class="stat-item">
+                        <div class="stat-number">Expert</div>
+                        <div class="stat-label">Team</div>
+                      </div>
+                    </div>
+
+                    <a href="#" class="btn-primary">Learn More <i class="bi bi-arrow-right"></i></a>
+                  </div>
+                </div>
+
+                <div class="col-lg-7">
+                  <div class="visual-content">
+                    <div class="main-image">
+                      <img src="assets/img/features/features-1.webp" alt="" class="img-fluid">
+                      <div class="floating-card">
+                        <i class="bi bi-headset"></i>
+                        <div class="card-content">
+                          <span>Support</span>
+                          <strong>Always Here</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End tab content item -->
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span class="description-title">Success Stories</span>
+        <h2>What Our Users Say</h2>
+        <p>Real feedback from professionals who improved their interview skills with AI Interview Coach</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="testimonial-masonry">
+
+          <div class="testimonial-item" data-aos="fade-up">
+            <div class="testimonial-content">
+              <div class="quote-pattern">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p>The AI interview coach transformed my confidence completely. The real-time feedback on my facial expressions and voice tone helped me identify areas I never knew I needed to improve. I landed my dream job after just three practice sessions!</p>
+              <div class="client-info">
+                <div class="client-image">
+                  <img src="assets/img/person/person-f-7.webp" alt="Client">
+                </div>
+                <div class="client-details">
+                  <h3>Rachel Bennett</h3>
+                  <span class="position">Software Engineer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item highlight" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial-content">
+              <div class="quote-pattern">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p>Exceptional service delivery and innovative solutions have transformed our business operations, leading to remarkable growth and enhanced customer satisfaction across all touchpoints.</p>
+              <div class="client-info">
+                <div class="client-image">
+                  <img src="assets/img/person/person-m-7.webp" alt="Client">
+                </div>
+                <div class="client-details">
+                  <h3>Daniel Morgan</h3>
+                  <span class="position">Chief Innovation Officer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-content">
+              <div class="quote-pattern">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p>Strategic partnership has enabled seamless digital transformation and operational excellence.</p>
+              <div class="client-info">
+                <div class="client-image">
+                  <img src="assets/img/person/person-f-8.webp" alt="Client">
+                </div>
+                <div class="client-details">
+                  <h3>Emma Thompson</h3>
+                  <span class="position">Digital Lead</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-content">
+              <div class="quote-pattern">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p>Professional expertise and dedication have significantly improved our project delivery timelines and quality metrics.</p>
+              <div class="client-info">
+                <div class="client-image">
+                  <img src="assets/img/person/person-m-8.webp" alt="Client">
+                </div>
+                <div class="client-details">
+                  <h3>Christopher Lee</h3>
+                  <span class="position">Technical Director</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item highlight" data-aos="fade-up" data-aos-delay="400">
+            <div class="testimonial-content">
+              <div class="quote-pattern">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p>Collaborative approach and industry expertise have revolutionized our product development cycle, resulting in faster time-to-market and increased customer engagement levels.</p>
+              <div class="client-info">
+                <div class="client-image">
+                  <img src="assets/img/person/person-f-9.webp" alt="Client">
+                </div>
+                <div class="client-details">
+                  <h3>Olivia Carter</h3>
+                  <span class="position">Product Manager</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="testimonial-content">
+              <div class="quote-pattern">
+                <i class="bi bi-quote"></i>
+              </div>
+              <p>Innovative approach to user experience design has significantly enhanced our platform's engagement metrics and customer retention rates.</p>
+              <div class="client-info">
+                <div class="client-image">
+                  <img src="assets/img/person/person-m-13.webp" alt="Client">
+                </div>
+                <div class="client-details">
+                  <h3>Nathan Brooks</h3>
+                  <span class="position">UX Director</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center mb-5" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="main-headline">Driving Excellence Through Innovation</h3>
+            <p class="main-description">Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae.</p>
+
+            <div class="achievement-badge" data-aos="zoom-in" data-aos-delay="300">
+              <div class="achievement-content">
+                <div class="achievement-icon">
+                  <i class="bi bi-trophy-fill"></i>
+                </div>
+                <div class="achievement-details">
+                  <div class="achievement-title">Industry Leader</div>
+                  <div class="achievement-subtitle">Recognized by 85+ industry experts</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="row g-4">
+            <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i class="bi bi-people-fill"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-number">
+                    <span data-purecounter-start="0" data-purecounter-end="285" data-purecounter-duration="2" class="purecounter"></span>K+
+                  </div>
+                  <div class="stat-label">Happy Customers</div>
+                  <div class="stat-growth">
+                    <i class="bi bi-arrow-up"></i>
+                    <span>+12% this year</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="stat-item featured">
+                <div class="stat-icon">
+                  <i class="bi bi-graph-up-arrow"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-number">
+                    <span data-purecounter-start="0" data-purecounter-end="98.5" data-purecounter-duration="2" class="purecounter"></span>%
+                  </div>
+                  <div class="stat-label">Success Rate</div>
+                  <div class="stat-growth">
+                    <i class="bi bi-arrow-up"></i>
+                    <span>+5% improvement</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i class="bi bi-award-fill"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-number">
+                    <span data-purecounter-start="0" data-purecounter-end="47" data-purecounter-duration="2" class="purecounter"></span>
+                  </div>
+                  <div class="stat-label">Awards Won</div>
+                  <div class="stat-growth">
+                    <i class="bi bi-arrow-up"></i>
+                    <span>+8 this quarter</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="400">
+              <div class="stat-item">
+                <div class="stat-icon">
+                  <i class="bi bi-globe"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-number">
+                    <span data-purecounter-start="0" data-purecounter-end="156" data-purecounter-duration="2" class="purecounter"></span>
+                  </div>
+                  <div class="stat-label">Global Partners</div>
+                  <div class="stat-growth">
+                    <i class="bi bi-arrow-up"></i>
+                    <span>+23 new partners</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span class="description-title">Contact</span>
+        <h2>Contact</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <div class="content" data-aos="fade-up" data-aos-delay="200">
+              <div class="section-category mb-3">Contact US</div>
+              <h2 class="display-5 mb-4">Nemo enim ipsam voluptatem quia voluptas aspernatur</h2>
+              <p class="lead mb-4">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+
+              <div class="contact-info mt-5">
+                <div class="info-item d-flex mb-3" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bi bi-envelope-at me-3"></i>
+                  <span>info@example.com</span>
+                </div>
+
+                <div class="info-item d-flex mb-3" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bi bi-telephone me-3"></i>
+                  <span>+1 5589 55488 558</span>
+                </div>
+
+                <div class="info-item d-flex mb-4" data-aos="fade-up" data-aos-delay="500">
+                  <i class="bi bi-geo-alt me-3"></i>
+                  <span>A108 Adam Street, New York, NY 535022</span>
+                </div>
+
+                <a href="#" class="map-link d-inline-flex align-items-center" data-aos="fade-up" data-aos-delay="600">
+                  Open Map
+                  <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
+              <div class="card-body p-4 p-lg-5">
+
+                <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+                  <div class="row gy-4">
+
+                    <div class="col-12">
+                      <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                    </div>
+
+                    <div class="col-12 ">
+                      <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                    </div>
+
+                    <div class="col-12">
+                      <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                    </div>
+
+                    <div class="col-12">
+                      <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                    </div>
+
+                    <div class="col-12 text-center">
+                      <div class="loading">Loading</div>
+                      <div class="error-message"></div>
+                      <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                      <button type="submit" class="btn btn-submit w-100">Submit Message</button>
+                    </div>
+
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+    <!-- Domain Selection Modal -->
+    <div class="modal fade" id="domainModal" tabindex="-1" aria-labelledby="domainModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+          <form id="domainForm">
+            <div class="modal-header border-0 pb-1">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <i class="bi bi-x-lg"></i>
+              </button>
+              <div class="text-center w-100">
+                <div class="modal-logo mb-2">
+                  <img src="assets/img/logo.webp" alt="AI Interview Coach" style="height: 50px; width: auto;">
+                </div>
+                <h5 class="modal-title mb-1" id="domainModalLabel">Choose Interview Domain</h5>
+                <p class="text-muted mb-0 small">Select your field of practice</p>
+              </div>
+            </div>
+            <div class="modal-body py-3">
+              <div class="row g-2">
+                <div class="col-6">
+                  <div class="domain-card" data-value="Software Engineering">
+                    <div class="domain-icon">
+                      <i class="bi bi-code-slash"></i>
+                    </div>
+                    <h6>Software Engineering</h6>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="domain-card" data-value="Data Science">
+                    <div class="domain-icon">
+                      <i class="bi bi-graph-up"></i>
+                    </div>
+                    <h6>Data Science</h6>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="domain-card" data-value="Product Management">
+                    <div class="domain-icon">
+                      <i class="bi bi-kanban"></i>
+                    </div>
+                    <h6>Product Management</h6>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="domain-card" data-value="Marketing">
+                    <div class="domain-icon">
+                      <i class="bi bi-megaphone"></i>
+                    </div>
+                    <h6>Marketing</h6>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="domain-card" data-value="Finance">
+                    <div class="domain-icon">
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <h6>Finance</h6>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="domain-card" data-value="Others">
+                    <div class="domain-icon">
+                      <i class="bi bi-plus-circle"></i>
+                    </div>
+                    <h6>Other Domain</h6>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="customDomainDiv" class="mt-3" style="display: none;">
+                <div class="form-floating">
+                  <input type="text" class="form-control form-control-sm" id="customDomainInput" placeholder="Enter your domain">
+                  <label for="customDomainInput">Enter custom domain</label>
+                </div>
+              </div>
+              
+              <input type="hidden" id="selectedDomain" name="domain" required>
+            </div>
+            <div class="modal-footer border-0 pt-1">
+              <button type="submit" class="btn btn-primary w-100" id="proceedBtn" disabled>
+                <i class="bi bi-arrow-right me-2"></i>Start Interview
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add custom styles for domain modal -->
+    <style>
+      .modal.fade .modal-dialog {
+        transform: translate(0, -50px);
+        transition: all 0.3s ease-out;
+      }
+      
+      .modal.show .modal-dialog {
+        transform: translate(0, 0);
+      }
+      
+      .domain-card {
+        border: 2px solid rgba(0, 161, 158, 0.1);
+        border-radius: 12px;
+        padding: 1rem 0.75rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        height: 100%;
+        background: var(--surface-color);
+        position: relative;
+        overflow: hidden;
+        min-height: 110px;
+      }
+      
+      .domain-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 161, 158, 0.1), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      .domain-card:hover::before {
+        left: 100%;
+      }
+      
+      .domain-card:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color), transparent 85%);
+      }
+      
+      .domain-card.selected {
+        border-color: var(--accent-color);
+        background: var(--accent-color);
+        color: white;
+        box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color), transparent 70%);
+        transform: translateY(-2px) scale(1.03);
+      }
+      
+      .domain-card.selected .domain-icon {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        transform: scale(1.05);
+      }
+      
+      .domain-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--accent-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 0.75rem;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+      }
+      
+      .domain-card h6 {
+        font-weight: 600;
+        margin-bottom: 0;
+        color: var(--heading-color);
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+        line-height: 1.2;
+      }
+      
+      .domain-card.selected h6 {
+        color: white;
+      }
+      
+      .modal-content {
+        border-radius: 16px;
+        border: none;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        overflow: hidden;
+        background: var(--surface-color);
+      }
+      
+      .modal-header {
+        position: relative;
+        background: var(--surface-color);
+        border-bottom: 1px solid color-mix(in srgb, var(--accent-color), transparent 90%);
+        padding: 1.25rem 1.5rem 0.75rem;
+      }
+      
+      .modal-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 0.25rem;
+      }
+      
+      .btn-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: 2px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        opacity: 1;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+      
+      .btn-close i {
+        color: var(--accent-color);
+        font-size: 1rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-close:hover {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+        transform: scale(1.1) rotate(90deg);
+      }
+      
+      .btn-close:hover i {
+        color: white;
+      }
+      
+      .modal-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        animation: logoFloat 3s ease-in-out infinite;
+      }
+      
+      @keyframes logoFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-3px); }
+      }
+      
+      .modal-logo img {
+        max-height: 50px;
+        width: auto;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        transition: all 0.3s ease;
+      }
+      
+      .modal-logo:hover img {
+        transform: scale(1.05);
+      }
+      
+      .modal-body {
+        padding: 1.25rem 1.5rem;
+      }
+      
+      .form-floating > label {
+        color: var(--accent-color);
+        font-weight: 500;
+        font-size: 0.85rem;
+      }
+      
+      .form-control:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent-color), transparent 80%);
+      }
+      
+      #proceedBtn {
+        background: var(--accent-color);
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      #proceedBtn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      #proceedBtn:hover::before {
+        left: 100%;
+      }
+      
+      #proceedBtn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 15px color-mix(in srgb, var(--accent-color), transparent 60%);
+      }
+      
+      #proceedBtn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+        background: color-mix(in srgb, var(--accent-color), transparent 50%);
+      }
+      
+      #proceedBtn:disabled::before {
+        display: none;
+      }
+      
+      .modal-footer {
+        padding: 0.75rem 1.5rem 1.25rem;
+        background: transparent;
+        border: none;
+      }
+      
+      /* Animation for domain cards */
+      .domain-card {
+        animation: cardSlideIn 0.6s ease-out forwards;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      
+      .domain-card:nth-child(1) { animation-delay: 0.1s; }
+      .domain-card:nth-child(2) { animation-delay: 0.2s; }
+      .domain-card:nth-child(3) { animation-delay: 0.3s; }
+      .domain-card:nth-child(4) { animation-delay: 0.4s; }
+      .domain-card:nth-child(5) { animation-delay: 0.5s; }
+      .domain-card:nth-child(6) { animation-delay: 0.6s; }
+      
+      @keyframes cardSlideIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* Custom scrollbar for modal */
+      .modal-body::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      .modal-body::-webkit-scrollbar-track {
+        background: color-mix(in srgb, var(--accent-color), transparent 95%);
+        border-radius: 3px;
+      }
+      
+      .modal-body::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 3px;
+      }
+      
+      .modal-body::-webkit-scrollbar-thumb:hover {
+        background: color-mix(in srgb, var(--accent-color), black 10%);
+      }
+      
+      /* Responsive improvements */
+      @media (max-width: 768px) {
+        .modal-dialog {
+          margin: 1rem;
+        }
+        
+        .domain-card {
+          padding: 0.75rem 0.5rem;
+          min-height: 100px;
+        }
+        
+        .domain-icon {
+          width: 35px;
+          height: 35px;
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        .domain-card h6 {
+          font-size: 0.85rem;
+        }
+        
+        .modal-title {
+          font-size: 1.1rem;
+        }
+        
+        .modal-header {
+          padding: 1rem 1.25rem 0.5rem;
+        }
+        
+        .modal-body {
+          padding: 1rem 1.25rem;
+        }
+        
+        .modal-footer {
+          padding: 0.5rem 1.25rem 1rem;
+        }
+        
+        .modal-icon {
+          width: 40px;
+          height: 40px;
+        }
+        
+        .modal-icon i {
+          font-size: 1.5rem;
+        }
+        
+        .btn-close {
+          width: 32px;
+          height: 32px;
+          top: 0.75rem;
+          right: 1rem;
+        }
+        
+        .btn-close i {
+          font-size: 0.9rem;
+        }
+        
+        .modal-logo img {
+          height: 40px;
+        }
+      }
+    </style>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">AI Interview Coach</span>
+          </a>
+          <p>Master your interview skills with our AI-powered coaching platform that provides real-time feedback on facial expressions, voice tone, and communication skills through advanced computer vision and natural language processing.</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#Interview">Interview</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="#features">Facial Analysis</a></li>
+            <li><a href="#features">Voice Analysis</a></li>
+            <li><a href="#features">Language Processing</a></li>
+            <li><a href="#features">Performance Report</a></li>
+            <li><a href="#Interview">AI Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>A108 Adam Street</p>
+          <p>New York, NY 535022</p>
+          <p>United States</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+          <p><strong>Email:</strong> <span>info@example.com</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var startBtn = document.getElementById('startInterviewBtn');
+      var domainModal = new bootstrap.Modal(document.getElementById('domainModal'));
+      var domainForm = document.getElementById('domainForm');
+      var customDomainDiv = document.getElementById('customDomainDiv');
+      var customDomainInput = document.getElementById('customDomainInput');
+      var selectedDomainInput = document.getElementById('selectedDomain');
+      var proceedBtn = document.getElementById('proceedBtn');
+
+      startBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        domainModal.show();
+      });
+
+      // Enhanced domain card selection with animations
+      document.querySelectorAll('.domain-card').forEach((card, index) => {
+        card.addEventListener('click', function() {
+          // Remove selected class from all cards with smooth transition
+          document.querySelectorAll('.domain-card').forEach(c => {
+            c.classList.remove('selected');
+            c.style.transform = '';
+          });
+          
+          // Add selected class to clicked card with enhanced animation
+          this.classList.add('selected');
+          
+          // Create ripple effect
+          createRippleEffect(this);
+          
+          var domain = this.getAttribute('data-value');
+          selectedDomainInput.value = domain;
+          
+          // Show/hide custom domain input with smooth transition
+          if (domain === 'Others') {
+            customDomainDiv.style.display = 'block';
+            customDomainDiv.style.opacity = '0';
+            customDomainDiv.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+              customDomainDiv.style.transition = 'all 0.3s ease';
+              customDomainDiv.style.opacity = '1';
+              customDomainDiv.style.transform = 'translateY(0)';
+            }, 10);
+            customDomainInput.required = true;
+            proceedBtn.disabled = !customDomainInput.value.trim();
+            updateProceedButton('Select a Domain First');
+          } else {
+            if (customDomainDiv.style.display !== 'none') {
+              customDomainDiv.style.transition = 'all 0.3s ease';
+              customDomainDiv.style.opacity = '0';
+              customDomainDiv.style.transform = 'translateY(-10px)';
+              setTimeout(() => {
+                customDomainDiv.style.display = 'none';
+              }, 300);
+            }
+            customDomainInput.required = false;
+            customDomainInput.value = '';
+            proceedBtn.disabled = false;
+            updateProceedButton(`Start ${this.querySelector('h6').textContent} Interview`);
+          }
+        });
+        
+        // Enhanced hover effects
+        card.addEventListener('mouseenter', function() {
+          if (!this.classList.contains('selected')) {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+          }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          if (!this.classList.contains('selected')) {
+            this.style.transform = '';
+          }
+        });
+      });
+
+      // Enhanced custom domain input handling
+      customDomainInput.addEventListener('input', function() {
+        const hasValue = this.value.trim();
+        proceedBtn.disabled = !hasValue;
+        
+        if (hasValue) {
+          updateProceedButton(`Start ${this.value.trim()} Interview`);
+        } else {
+          updateProceedButton('Enter Domain Name');
+        }
+      });
+
+      // Enhanced form submission with loading states
+      domainForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var domain = selectedDomainInput.value;
+        var finalDomain = domain;
+        
+        // If "Others" is selected, use the custom input value
+        if (domain === 'Others') {
+          finalDomain = customDomainInput.value.trim();
+        }
+        
+        if (finalDomain && finalDomain !== 'Others') {
+          // Add loading state with animation
+          proceedBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Starting Interview...';
+          proceedBtn.disabled = true;
+          
+          // Add modal exit animation
+          const modalContent = document.querySelector('#domainModal .modal-content');
+          modalContent.style.transition = 'all 0.3s ease';
+          modalContent.style.transform = 'scale(0.9) translateY(20px)';
+          modalContent.style.opacity = '0.7';
+          
+          // Store the user_role value
+          localStorage.setItem('user_role', finalDomain);
+          
+          // Delayed redirect with smooth transition
+          setTimeout(() => {
+            window.location.href = '/interview?domain=' + encodeURIComponent(finalDomain);
+          }, 800);
+        }
+      });
+      
+      // Reset modal state when opened
+      document.getElementById('domainModal').addEventListener('show.bs.modal', function() {
+        document.querySelectorAll('.domain-card').forEach(card => {
+          card.classList.remove('selected');
+          card.style.transform = '';
+        });
+        customDomainDiv.style.display = 'none';
+        customDomainInput.value = '';
+        selectedDomainInput.value = '';
+        proceedBtn.disabled = true;
+        updateProceedButton('Select a Domain First');
+        
+        // Reset modal content animation
+        const modalContent = this.querySelector('.modal-content');
+        modalContent.style.transform = '';
+        modalContent.style.opacity = '';
+      });
+      
+      // Add entrance animation when modal is shown
+      document.getElementById('domainModal').addEventListener('shown.bs.modal', function() {
+        const cards = this.querySelectorAll('.domain-card');
+        cards.forEach((card, index) => {
+          card.style.animation = 'none';
+          card.offsetHeight; // Trigger reflow
+          card.style.animation = `cardSlideIn 0.6s ease-out ${0.1 * (index + 1)}s forwards`;
+        });
+      });
+    });
+
+    // Enhanced proceed button update function
+    function updateProceedButton(text) {
+      const proceedBtn = document.getElementById('proceedBtn');
+      proceedBtn.style.transition = 'all 0.3s ease';
+      
+      if (proceedBtn.disabled) {
+        proceedBtn.style.opacity = '0.5';
+        proceedBtn.style.transform = 'scale(0.98)';
+      } else {
+        proceedBtn.style.opacity = '1';
+        proceedBtn.style.transform = 'scale(1)';
+      }
+      
+      proceedBtn.innerHTML = `<i class="bi bi-arrow-right me-2"></i>${text}`;
+    }
+
+    // Enhanced ripple effect function
+    function createRippleEffect(element) {
+      const ripple = document.createElement('div');
+      const rect = element.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      
+      ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        background: radial-gradient(circle, rgba(0,161,158,0.4) 0%, rgba(0,161,158,0.1) 50%, transparent 100%);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: rippleEffect 0.8s ease-out;
+        pointer-events: none;
+        left: 50%;
+        top: 50%;
+        margin-left: -${size/2}px;
+        margin-top: -${size/2}px;
+        z-index: 1;
+      `;
+      
+      element.style.position = 'relative';
+      element.style.overflow = 'hidden';
+      element.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.remove();
+      }, 800);
+    }
+    
+    // Add enhanced keyframe animations
+    const enhancedStyle = document.createElement('style');
+    enhancedStyle.textContent = `
+      @keyframes rippleEffect {
+        to {
+          transform: scale(1.5);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes cardSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8) translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      
+      /* Enhanced loading spinner */
+      .spinner-border-sm {
+        animation: spin 0.8s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(enhancedStyle);
+  </script>
+
+</body>
+
+</html>

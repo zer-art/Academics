@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Report - AI Interview Coach</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+          --accent-color: #00a19e;
+          --surface-color: #ffffff;
+          --heading-color: #012970;
+          --default-color: #444444;
+          --light-background: #f8f9ff;
+        }
+        
+        .report-header {
+            background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), black 15%) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .report-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.75rem;
+            font-weight: bold;
+            position: relative;
+            border: 4px solid rgba(255,255,255,0.3);
+            animation: scoreGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes scoreGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+            50% { box-shadow: 0 0 30px rgba(255,255,255,0.5); }
+        }
+        
+        .score-excellent { 
+            background: linear-gradient(135deg, #28a745, #20c997); 
+            color: white;
+        }
+        .score-good { 
+            background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), green 20%)); 
+            color: white;
+        }
+        .score-average { 
+            background: linear-gradient(135deg, #ffc107, #fd7e14); 
+            color: white;
+        }
+        .score-poor { 
+            background: linear-gradient(135deg, #dc3545, #bd2130); 
+            color: white;
+        }
+        
+        .report-section {
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 1px solid color-mix(in srgb, var(--accent-color), transparent 90%);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .report-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-color), color-mix(in srgb, var(--accent-color), black 20%));
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .report-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
+        
+        .report-section h3 {
+            color: var(--heading-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .report-section h3 i {
+            color: var(--accent-color);
+            font-size: 1.25rem;
+        }
+        
+        .question-item {
+            border: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            background: var(--surface-color);
+            position: relative;
+        }
+        
+        .question-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), color-mix(in srgb, var(--accent-color), transparent 70%));
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .question-item:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+        
+        .emotion-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .emotion-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+            background: var(--light-background);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+        
+        .progress {
+            height: 12px;
+            border-radius: 6px;
+            background: color-mix(in srgb, var(--accent-color), transparent 90%);
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--accent-color), color-mix(in srgb, var(--accent-color), black 10%));
+            border-radius: 6px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .progress-bar.bg-warning {
+            background: linear-gradient(90deg, #ffc107, #fd7e14);
+        }
+        
+        .table-borderless td {
+            color: var(--default-color);
+            padding: 0.75rem 0;
+            border: none;
+        }
+        
+        .table-borderless td:first-child {
+            color: var(--heading-color);
+            font-weight: 600;
+        }
+        
+        .alert {
+            border-radius: 12px;
+            border: none;
+            padding: 1.25rem;
+        }
+        
+        .alert-info {
+            background: color-mix(in srgb, var(--accent-color), transparent 95%);
+            color: var(--heading-color);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .alert-light {
+            background: var(--light-background);
+            color: var(--default-color);
+            border-left: 4px solid color-mix(in srgb, var(--accent-color), transparent 50%);
+        }
+        
+        .btn-primary {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            border-radius: 8px;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: color-mix(in srgb, var(--accent-color), black 10%);
+            border-color: color-mix(in srgb, var(--accent-color), black 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color), transparent 60%);
+        }
+        
+        .btn-outline-primary {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            border-radius: 8px;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color), transparent 60%);
+        }
+        
+        .badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+        }
+        
+        .bg-primary {
+            background: var(--accent-color) !important;
+        }
+        
+        .text-success {
+            color: #28a745 !important;
+        }
+        
+        .text-warning {
+            color: #ffc107 !important;
+        }
+        
+        .text-danger {
+            color: #dc3545 !important;
+        }
+        
+        /* Enhanced animations */
+        .report-section {
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        .report-section:nth-child(1) { animation-delay: 0.1s; }
+        .report-section:nth-child(2) { animation-delay: 0.2s; }
+        .report-section:nth-child(3) { animation-delay: 0.3s; }
+        .report-section:nth-child(4) { animation-delay: 0.4s; }
+        .report-section:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .report-header {
+                padding: 2rem 0;
+            }
+            
+            .score-circle {
+                width: 100px;
+                height: 100px;
+                font-size: 1.5rem;
+            }
+            
+            .report-section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .question-item {
+                padding: 1.25rem;
+            }
+            
+            .btn-lg {
+                padding: 0.75rem 1.25rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="report-header">
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3">
+                            <img src="/assets/img/logo.webp" alt="AI Interview Coach" style="height: 60px; width: auto; filter: brightness(0) invert(1);">
+                        </div>
+                        <div>
+                            <h1 class="mb-1"><i class="bi bi-file-text me-2"></i>Interview Report</h1>
+                            <p class="lead mb-0 opacity-90">Comprehensive analysis of your interview performance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end">
+                    <div id="overallScore" class="score-circle">
+                        <span id="scoreValue">-</span>
+                    </div>
+                    <p class="text-center mt-2 mb-0 fw-semibold">Overall Score</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Summary Section -->
+        <div class="report-section">
+            <h3><i class="bi bi-info-circle"></i> Interview Summary</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tr><td><strong>Position:</strong></td><td id="position">-</td></tr>
+                        <tr><td><strong>Date:</strong></td><td id="date">-</td></tr>
+                        <tr><td><strong>Duration:</strong></td><td id="duration">-</td></tr>
+                        <tr><td><strong>Questions:</strong></td><td id="questionsCount">-</td></tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h5>Score Breakdown</h5>
+                    <div class="progress mb-2">
+                        <div id="answerProgress" class="progress-bar" style="width: 0%">Answers (70%)</div>
+                    </div>
+                    <div class="progress">
+                        <div id="emotionProgress" class="progress-bar bg-warning" style="width: 0%">Emotions (30%)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Emotion Analysis Section -->
+        <div class="report-section">
+            <h3><i class="bi bi-emoji-smile"></i> Emotion Analysis</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <canvas id="emotionChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5>Dominant Emotion: <span id="dominantEmotion" class="emotion-badge">-</span></h5>
+                    <div id="emotionDistribution" class="mt-3">
+                        <!-- Emotion distribution will be populated here -->
+                    </div>
+                    <div class="alert alert-info mt-3">
+                        <strong>Recommendation:</strong> <span id="emotionRecommendation">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question Analysis Section -->
+        <div class="report-section">
+            <h3><i class="bi bi-question-circle"></i> Question-by-Question Analysis</h3>
+            <div id="questionAnalysis">
+                <!-- Questions will be populated here -->
+            </div>
+        </div>
+        
+        <!-- Overall Feedback Section -->
+        <div class="report-section">
+            <h3><i class="bi bi-chat-text"></i> Overall Feedback</h3>
+            <div id="overallFeedback" class="lead">
+                <!-- Overall feedback will be populated here -->
+            </div>
+        </div>
+        
+        <!-- Recommendations Section -->
+        <div class="report-section">
+            <h3><i class="bi bi-lightbulb"></i> Recommendations</h3>
+            <div id="recommendations">
+                <!-- Recommendations will be populated here -->
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="text-center mb-5">
+            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                <button onclick="downloadReport()" class="btn btn-primary btn-lg">
+                    <i class="bi bi-download me-2"></i>Download Report
+                </button>
+                <button onclick="startNewInterview()" class="btn btn-outline-primary btn-lg">
+                    <i class="bi bi-arrow-repeat me-2"></i>Take Another Interview
+                </button>
+                <button onclick="shareReport()" class="btn btn-outline-primary btn-lg">
+                    <i class="bi bi-share me-2"></i>Share Results
+                </button>
+            </div>
+            <div class="mt-4">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle me-1"></i>
+                    Your report data is stored locally and not shared with third parties
+                </small>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        class ReportViewer {
+            constructor() {
+                this.report = null;
+                this.loadReport();
+            }
+            
+            loadReport() {
+                const reportData = localStorage.getItem('interviewReport');
+                if (reportData) {
+                    this.report = JSON.parse(reportData);
+                    this.displayReport();
+                } else {
+                    this.showNoReportMessage();
+                }
+            }
+            
+            displayReport() {
+                this.displaySummary();
+                this.displayScoreBreakdown();
+                this.displayEmotionAnalysis();
+                this.displayQuestionAnalysis();
+                this.displayOverallFeedback();
+                this.displayRecommendations();
+            }
+            
+            displaySummary() {
+                const summary = this.report.interview_summary;
+                
+                document.getElementById('position').textContent = summary.user_role;
+                document.getElementById('date').textContent = summary.date;
+                document.getElementById('duration').textContent = summary.duration;
+                document.getElementById('questionsCount').textContent = summary.questions_answered;
+                
+                // Overall score
+                const score = this.report.scoring.final_score;
+                const scoreElement = document.getElementById('scoreValue');
+                const scoreCircle = document.getElementById('overallScore');
+                
+                scoreElement.textContent = score;
+                
+                // Color code based on score
+                scoreCircle.className = 'score-circle ';
+                if (score >= 80) scoreCircle.className += 'score-excellent';
+                else if (score >= 70) scoreCircle.className += 'score-good';
+                else if (score >= 60) scoreCircle.className += 'score-average';
+                else scoreCircle.className += 'score-poor';
+            }
+            
+            displayScoreBreakdown() {
+                const scoring = this.report.scoring;
+                
+                document.getElementById('answerProgress').style.width = `${scoring.answer_score}%`;
+                document.getElementById('answerProgress').textContent = `Answers: ${scoring.answer_score}/100 (70%)`;
+                
+                document.getElementById('emotionProgress').style.width = `${scoring.emotion_score}%`;
+                document.getElementById('emotionProgress').textContent = `Emotions: ${scoring.emotion_score}/100 (30%)`;
+            }
+            
+            displayEmotionAnalysis() {
+                const emotion = this.report.emotion_analysis;
+                
+                // Dominant emotion
+                const dominantElement = document.getElementById('dominantEmotion');
+                dominantElement.textContent = emotion.dominant_emotion || 'Unknown';
+                dominantElement.className = `emotion-badge ${this.getEmotionClass(emotion.dominant_emotion)}`;
+                
+                // Emotion distribution
+                const distributionElement = document.getElementById('emotionDistribution');
+                distributionElement.innerHTML = '';
+                
+                if (emotion.distribution) {
+                    Object.entries(emotion.distribution).forEach(([emotionName, percentage]) => {
+                        const badge = document.createElement('span');
+                        badge.className = `emotion-badge ${this.getEmotionClass(emotionName)}`;
+                        badge.textContent = `${emotionName}: ${percentage.toFixed(1)}%`;
+                        distributionElement.appendChild(badge);
+                    });
+                }
+                
+                // Create emotion chart
+                this.createEmotionChart(emotion.distribution || {});
+                
+                // Emotion recommendation
+                const recommendation = this.getEmotionRecommendation(emotion.dominant_emotion);
+                document.getElementById('emotionRecommendation').textContent = recommendation;
+            }
+            
+            createEmotionChart(distribution) {
+                const ctx = document.getElementById('emotionChart').getContext('2d');
+                
+                const labels = Object.keys(distribution);
+                const data = Object.values(distribution);
+                const colors = labels.map(emotion => this.getEmotionColor(emotion));
+                
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: data,
+                            backgroundColor: colors,
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Emotion Distribution Throughout Interview'
+                            }
+                        }
+                    }
+                });
+            }
+            
+            displayQuestionAnalysis() {
+                const analysisContainer = document.getElementById('questionAnalysis');
+                analysisContainer.innerHTML = '';
+                
+                this.report.question_analysis.forEach((qa, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'question-item';
+                    
+                    const scoreClass = qa.score >= 80 ? 'text-success' : 
+                                     qa.score >= 70 ? 'text-primary' : 
+                                     qa.score >= 60 ? 'text-warning' : 'text-danger';
+                    
+                    questionDiv.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5>Question ${index + 1}</h5>
+                            <span class="badge bg-primary fs-6">${qa.score}/100</span>
+                        </div>
+                        <p><strong>Q:</strong> ${qa.question}</p>
+                        <p><strong>A:</strong> ${qa.answer}</p>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <h6 class="text-success">Strengths:</h6>
+                                <ul>
+                                    ${qa.strengths.map(s => `<li>${s}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-warning">Areas for Improvement:</h6>
+                                <ul>
+                                    ${qa.improvements.map(i => `<li>${i}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-light">
+                            <strong>Feedback:</strong> ${qa.feedback}
+                        </div>
+                    `;
+                    
+                    analysisContainer.appendChild(questionDiv);
+                });
+            }
+            
+            displayOverallFeedback() {
+                document.getElementById('overallFeedback').textContent = this.report.overall_feedback;
+            }
+            
+            displayRecommendations() {
+                const recommendationsContainer = document.getElementById('recommendations');
+                recommendationsContainer.innerHTML = '';
+                
+                this.report.recommendations.forEach(recommendation => {
+                    const recDiv = document.createElement('div');
+                    recDiv.className = 'alert alert-info';
+                    recDiv.innerHTML = `<i class="bi bi-check-circle"></i> ${recommendation}`;
+                    recommendationsContainer.appendChild(recDiv);
+                });
+            }
+            
+            getEmotionClass(emotion) {
+                const classes = {
+                    'happy': 'bg-success text-white',
+                    'neutral': 'bg-primary text-white',
+                    'sad': 'bg-danger text-white',
+                    'angry': 'bg-danger text-white',
+                    'fear': 'bg-warning text-dark',
+                    'surprise': 'bg-info text-white',
+                    'disgust': 'bg-secondary text-white'
+                };
+                return classes[emotion] || 'bg-light text-dark';
+            }
+            
+            getEmotionColor(emotion) {
+                const colors = {
+                    'happy': '#28a745',
+                    'neutral': '#007bff',
+                    'sad': '#dc3545',
+                    'angry': '#dc3545',
+                    'fear': '#ffc107',
+                    'surprise': '#17a2b8',
+                    'disgust': '#6c757d'
+                };
+                return colors[emotion] || '#6c757d';
+            }
+            
+            getEmotionRecommendation(emotion) {
+                const recommendations = {
+                    'happy': 'Excellent! Your positive demeanor came through clearly.',
+                    'neutral': 'Good composure. Consider showing more enthusiasm.',
+                    'sad': 'Try to maintain a more positive expression during interviews.',
+                    'angry': 'Work on maintaining calm and professional demeanor.',
+                    'fear': 'Practice relaxation techniques to appear more confident.',
+                    'surprise': 'Good engagement, but maintain professional composure.',
+                    'disgust': 'Focus on maintaining neutral to positive expressions.'
+                };
+                return recommendations[emotion] || 'Continue practicing to improve your interview presence.';
+            }
+            
+            showNoReportMessage() {
+                document.body.innerHTML = `
+                    <div class="container mt-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-lg-6">
+                                <div class="text-center">
+                                    <div class="mb-4">
+                                        <img src="/assets/img/logo.webp" alt="AI Interview Coach" style="height: 80px; width: auto;">
+                                    </div>
+                                    <div class="alert alert-warning border-0 shadow-sm" style="border-radius: 16px;">
+                                        <div class="mb-3">
+                                            <i class="bi bi-exclamation-triangle" style="font-size: 3rem; color: var(--accent-color);"></i>
+                                        </div>
+                                        <h4 class="alert-heading">No Report Found</h4>
+                                        <p class="mb-3">It looks like you haven't completed an interview session yet. Start your AI-powered interview practice to get detailed feedback and insights.</p>
+                                        <hr style="border-color: var(--accent-color); opacity: 0.3;">
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                            <a href="/" class="btn btn-primary btn-lg">
+                                                <i class="bi bi-play-circle me-2"></i>Start Interview
+                                            </a>
+                                            <a href="/about" class="btn btn-outline-primary btn-lg">
+                                                <i class="bi bi-info-circle me-2"></i>Learn More
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        body {
+                            background: var(--light-background);
+                            min-height: 100vh;
+                            display: flex;
+                            align-items: center;
+                        }
+                        
+                        @keyframes slideInRight {
+                            from { transform: translateX(100%); opacity: 0; }
+                            to { transform: translateX(0); opacity: 1; }
+                        }
+                        
+                        @keyframes slideOutRight {
+                            from { transform: translateX(0); opacity: 1; }
+                            to { transform: translateX(100%); opacity: 0; }
+                        }
+                    </style>
+                `;
+            }
+        }
+        
+        function downloadReport() {
+            const reportData = localStorage.getItem('interviewReport');
+            if (reportData) {
+                const blob = new Blob([reportData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `interview_report_${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                // Show success message
+                showNotification('Report downloaded successfully!', 'success');
+            }
+        }
+        
+        function startNewInterview() {
+            // Show confirmation dialog
+            if (confirm('Are you sure you want to start a new interview? This will clear your current report.')) {
+                localStorage.removeItem('interviewReport');
+                window.location.href = '/';
+            }
+        }
+        
+        function shareReport() {
+            const reportData = localStorage.getItem('interviewReport');
+            if (reportData && navigator.share) {
+                const report = JSON.parse(reportData);
+                navigator.share({
+                    title: 'My Interview Report - AI Interview Coach',
+                    text: `I scored ${report.scoring.final_score}/100 in my ${report.interview_summary.user_role} interview!`,
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                // Fallback to copying to clipboard
+                const report = JSON.parse(reportData);
+                const shareText = `I scored ${report.scoring.final_score}/100 in my ${report.interview_summary.user_role} interview with AI Interview Coach!`;
+                navigator.clipboard.writeText(shareText).then(() => {
+                    showNotification('Share text copied to clipboard!', 'info');
+                }).catch(() => {
+                    showNotification('Unable to share at this time', 'warning');
+                });
+            }
+        }
+        
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type} position-fixed`;
+            notification.style.cssText = `
+                top: 20px; 
+                right: 20px; 
+                z-index: 9999; 
+                min-width: 300px;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            notification.innerHTML = `
+                <i class="bi bi-check-circle me-2"></i>${message}
+                <button type="button" class="btn-close float-end" aria-label="Close"></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease-in';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+            
+            // Manual close
+            notification.querySelector('.btn-close').addEventListener('click', () => {
+                notification.style.animation = 'slideOutRight 0.3s ease-in';
+                setTimeout(() => notification.remove(), 300);
+            });
+        }
+        
+        // Initialize report viewer when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            new ReportViewer();
+        });
+    </script>
+</body>
+</html>
