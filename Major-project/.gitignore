@@ -12,3 +12,5 @@ data/*
 *.pkl
 logs/
 logs/*
+assets/
+assets/*
