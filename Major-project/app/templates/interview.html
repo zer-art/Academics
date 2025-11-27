@@ -4,13 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>AI Interview Coach - Interview Session</title>
+  <title>AIVOX - Interview</title>
+  <link rel="icon" href="data:,">
   <meta name="description" content="AI-powered interview session with real-time feedback">
   <meta name="keywords" content="AI interview, mock interview, emotion analysis, voice analysis">
-
-  <!-- Favicons -->
-  <link href="/assets/img/favicon.png" rel="icon">
-  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -28,7 +25,7 @@
   <link href="/assets/css/main.css" rel="stylesheet">
 
   <!-- Interview Specific CSS -->
-  <link rel="stylesheet" href="/assets/css/interview.css">
+  <link rel="stylesheet" href="/assets/css/interview.css?v=skip-feature-2024">
 </head>
 
 <body class="interview-page">
@@ -36,9 +33,9 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
-      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
-        <h1 class="sitename">AI Interview Coach</h1>
-      </a>
+      <div class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">AIVOX</h1>
+      </div>
 
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -87,8 +84,8 @@
                 </span>
               </div>
               <div id="emotionOverlay" class="emotion-overlay" style="display: none;">
-                <div><strong>Emotion:</strong> <span id="currentEmotion">Detecting...</span></div>
-                <div><strong>Confidence:</strong> <span id="emotionConfidence">-</span>%</div>
+                <div><strong>Confidence:</strong> <span id="currentEmotion">Analyzing...</span></div>
+                <div><strong>Score:</strong> <span id="emotionConfidence">-</span>%</div>
               </div>
             </div>
           </div>
@@ -139,6 +136,10 @@
 
                 <button id="nextBtn" class="btn-interview btn-next" disabled>
                   <i class="bi bi-arrow-right me-2"></i> Next Question
+                </button>
+
+                <button id="skipBtn" class="btn-interview btn-skip" style="display: none;">
+                  <i class="bi bi-skip-forward me-2"></i> Skip to Report
                 </button>
               </div>
 
@@ -289,9 +290,9 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
-          <a href="/" class="logo d-flex align-items-center">
-            <span class="sitename">AI Interview Coach</span>
-          </a>
+          <div class="logo d-flex align-items-center">
+            <h1 class="sitename">AIVOX</h1>
+          </div>
           <p>Master your interview skills with our AI-powered coaching platform that provides real-time feedback on
             facial expressions, voice tone, and communication skills.</p>
           <div class="social-links d-flex mt-4">
@@ -353,8 +354,8 @@
   <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/vendor/aos/aos.js"></script>
 
-  <!-- Interview JS -->
-  <script src="/assets/js/interview.js"></script>
+  <!-- Interview JS - Cache busted for skip feature -->
+  <script src="/assets/js/interview.js?v=skip-feature-2024"></script>
 
   <!-- Initialize AOS -->
   <script>

@@ -1,6 +1,20 @@
-# AI-Powered Interview Coach: Multimodal Emotion & Language-Aware Feedback System
+# AI-Powered Interview Coach: Free & Blazing Fast Multimodal System
 
-An advanced AI interview coaching platform that simulates mock interviews using Large Language Models (LLM) and provides real-time multimodal analysis through Computer Vision, Natural Language Processing, and Deep Learning techniques.
+A next-generation AI interview coaching platform featuring a **"Free & Blazing Fast"** architecture that delivers:
+- **$0 Cost**: Free Groq API for state-of-the-art speech recognition
+- **Low Latency**: Continuous voice activity detection with 100ms response time
+- **High Accuracy**: Whisper-large-v3 transcription via Groq with local Silero VAD
+
+This system provides comprehensive interview preparation through real-time multimodal analysis using Computer Vision, Advanced Speech Processing, and Large Language Models.
+
+## 🚀 Modern Architecture Highlights
+
+- **Continuous Voice Activity Detection**: Silero VAD running locally on microphone stream
+- **Smart Audio Buffering**: 0.5s rolling buffer prevents word cutoff
+- **Intelligent Speech Recognition**: Free Groq API with Whisper-large-v3 model
+- **Real-time Emotion Analysis**: DeepFace computer vision for facial expression tracking
+- **FastAPI Backend**: Modern async Python web framework
+- **Blazing Fast Performance**: Optimized for sub-second response times
 
 ## Project Overview
 
@@ -55,41 +69,49 @@ This system provides comprehensive interview preparation by:
 
 ## Technology Stack
 
-### Frontend
+### 🎤 Modern Audio Processing Stack
+- **Silero VAD**: Local voice activity detection (continuous stream processing)
+- **Groq API**: Free Whisper-large-v3 speech-to-text transcription
+- **Smart Buffering**: Rolling audio buffer with intelligent chunking
+- **PyTorch**: Deep learning framework for audio processing
+- **SoundDevice**: Real-time audio capture and streaming
+
+### 🖥️ Backend Architecture
+- **FastAPI**: Modern async Python web framework
+- **Pydantic**: Data validation and serialization
+- **Uvicorn**: Lightning-fast ASGI server
+- **Threading**: Concurrent audio processing and VAD
+- **Async/Await**: Non-blocking I/O for real-time performance
+
+### 🧠 AI & ML Models
+- **Groq Whisper-large-v3**: State-of-the-art speech recognition (free)
+- **Silero VAD**: Local voice activity detection model
+- **DeepFace**: Advanced facial emotion recognition
+- **Google Gemini**: LLM for question generation and evaluation
+- **LangChain**: LLM orchestration and prompt management
+
+### 🌐 Frontend
 - **HTML5/CSS3/JavaScript**: Modern responsive web interface
 - **Bootstrap 5**: Professional UI framework
-- **WebRTC**: Real-time audio/video capture and processing
+- **WebRTC**: Real-time audio/video capture
 - **Canvas API**: Live video frame analysis
-- **Chart.js**: Interactive performance visualizations
-
-### Backend
-- **Python/Flask**: Core application logic and API endpoints
-- **OpenCV**: Computer vision and image processing
-- **DeepFace**: Advanced facial emotion recognition
-- **N8N Integration**: Workflow automation capabilities
-
-### AI & ML Models
-- **LLM Integration**: Gemini/GPT for interview question generation and evaluation
-- **DeepFace**: Pre-trained facial expression and emotion recognition
-- **Real-time Analysis**: Live emotion detection and feedback systems
-- **Multimodal Processing**: Combined vision, audio, and text analysis
+- **Chart.js**: Performance visualization
 
 ## Project Structure
 
 ```
 MAJOR-PROJECT/
-├── app/                        # Main application backend
-│   ├── main.py                # Flask application entry point
+├── app/                        # FastAPI application
+│   ├── main.py                # FastAPI application entry point
 │   ├── config.py              # Application configuration
-│   ├── routers/               # API route handlers
-│   │   └── interview.py       # Interview-specific endpoints
-│   ├── services/              # Business logic services
-│   │   ├── integration/       # External service integrations
-│   │   │   └── n8n.py        # N8N workflow integration
-│   │   └── vision/           # Computer vision services
-│   │       └── deepface.py   # Facial analysis implementation
-│   └── templates/            # HTML templates
-│       └── interview.html    # Interactive interview interface
+│   ├── src/                   # Core application modules
+│   │   ├── utils.py          # Interview logic and audio handling
+│   │   ├── deepface.py       # Facial emotion analysis
+│   │   ├── llm.py            # LLM integration (Gemini)
+│   │   └── prompt.py         # Prompt templates
+│   └── templates/            # Jinja2 HTML templates
+│       ├── interview.html    # Interactive interview interface
+│       └── report.html       # Performance report page
 ├── landing/                   # Marketing website
 │   ├── index.html            # Main landing page
 │   └── assets/               # Static assets
@@ -119,31 +141,39 @@ Create a `.env` file in the project root:
 
 ```env
 # AI Model API Keys
-GEMINI_API_KEY=your_gemini_api_key_here
-OPENAI_API_KEY=your_openai_api_key_here
+GEMINI=your_gemini_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 
-# Application Settings
-FLASK_ENV=development
-FLASK_DEBUG=True
+# JWT Secret Key (change this to a secure random string in production)
+SECRET_KEY=your-super-secret-jwt-key-change-this-in-production
 
-# Database Configuration (if applicable)
-DATABASE_URL=your_database_url_here
+# Google OAuth Credentials (optional)
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_REDIRECT_URI=http://localhost:8000/auth/google/callback
 
-# N8N Integration (optional)
-N8N_WEBHOOK_URL=your_n8n_webhook_url
+# GitHub OAuth Credentials (optional)
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GITHUB_REDIRECT_URI=http://localhost:8000/auth/github/callback
+
+# Frontend URL
+FRONTEND_URL=http://localhost:8000
 ```
 
 ### 3. API Key Setup
 
-**For Gemini AI:**
+**For Google Gemini AI:**
 1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
 2. Create a new API key
-3. Add it to your `.env` file
+3. Add it to your `.env` file as `GEMINI=your_key_here`
 
-**For OpenAI (optional):**
-1. Visit [OpenAI API](https://platform.openai.com/api-keys)
-2. Create an API key
-3. Add it to your `.env` file
+**For Groq API (Free Speech Recognition):**
+1. Visit [Groq Console](https://console.groq.com/)
+2. Create a free account and generate an API key
+3. Add it to your `.env` file as `GROQ_API_KEY=your_key_here`
+
+**Note**: Groq provides free access to Whisper-large-v3 for speech recognition!
 
 ### 4. Optional: Google Cloud Setup
 
@@ -168,51 +198,115 @@ chmod +x run.sh
 Or run directly with Python:
 
 ```bash
-cd app
-python main.py
+# Start the FastAPI server
+python app/main.py
+```
+
+Or using uvicorn directly:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ### Accessing the Application
 
-1. **Landing Page**: Visit `http://localhost:5000` for the marketing site
-2. **Interview Interface**: Navigate to the interview section or visit `http://localhost:5000/interview`
-3. **API Endpoints**: Available at `http://localhost:5000/api/`
+1. **Landing Page**: Visit `http://localhost:8000` for the marketing site
+2. **Interview Interface**: Navigate to `http://localhost:8000/interview`
+3. **Report Page**: View results at `http://localhost:8000/report`
+4. **API Documentation**: FastAPI auto-docs at `http://localhost:8000/docs`
+5. **Health Check**: Monitor status at `http://localhost:8000/health`
 
 ### Interview Flow
 
-1. **Camera Permission**: Grant camera access for facial analysis
-2. **Interview Setup**: AI generates personalized questions
-3. **Live Interview**: Real-time interaction with emotion tracking
-4. **Performance Analysis**: Continuous feedback and scoring
-5. **Session Summary**: Comprehensive report with recommendations
+1. **Initialize Session**: Start interview with role-specific question generation
+2. **Audio Monitoring**: Continuous voice activity detection begins automatically
+3. **Smart Recording**: Voice detection triggers recording with 0.5s buffer
+4. **Real-time Transcription**: Audio sent to Groq for instant Whisper-large-v3 transcription
+5. **Answer Completion**: 3-second silence threshold indicates complete answer
+6. **Live Analysis**: Immediate emotion tracking and answer evaluation
+7. **Adaptive Questions**: Dynamic follow-up based on responses
+8. **Session Report**: Comprehensive analysis with improvement recommendations
+
+### 🎤 Audio Processing Features
+
+- **Continuous VAD**: Silero model detects voice activity in real-time
+- **Smart Buffering**: Rolling 500ms buffer prevents word cutoff
+- **Adaptive Recording**: Automatic start/stop based on voice activity
+- **Zero Latency**: Local VAD processing with no API delays
+- **High Accuracy**: Whisper-large-v3 transcription via free Groq API
 
 ## API Endpoints
 
 ### Core Interview APIs
 
-- `POST /api/analyze-frame`: Real-time facial emotion analysis
-- `GET /api/interview/questions`: Generate interview questions
-- `POST /api/interview/evaluate`: Evaluate interview responses
-- `GET /api/interview/report`: Generate performance reports
+- `POST /start_interview`: Initialize new interview session with role-specific questions
+- `GET /ask_question/{question_index}`: Text-to-speech for specific question
+- `POST /record_answer`: Wait for and capture complete user answer
+- `POST /analyze_emotion`: Real-time facial emotion analysis
+- `POST /finish_interview`: Complete session and generate comprehensive report
+- `POST /test_audio`: Test audio system functionality
 
-### Integration APIs
+### System APIs
 
-- `POST /api/n8n/webhook`: N8N workflow integration
-- `GET /api/health`: Application health check
+- `GET /health`: Application health check and service status
+- `GET /docs`: FastAPI automatic documentation
+- `GET /`: Landing page
+- `GET /interview`: Interview interface
+- `GET /report`: Performance report page
+
+### API Request/Response Examples
+
+```python
+# Start Interview
+POST /start_interview
+{
+    "user_role": "Software Engineer"
+}
+
+# Response
+{
+    "success": true,
+    "questions": ["Tell me about yourself..."],
+    "message": "Interview initialized for Software Engineer"
+}
+
+# Record Answer (waits for complete speech)
+POST /record_answer
+{
+    "session_id": "default"
+}
+
+# Response
+{
+    "success": true,
+    "answer": "I am a software engineer with 5 years...",
+    "score": 85,
+    "feedback": "Great technical depth..."
+}
+```
 
 ## Real-time Features
 
-### Live Emotion Analysis
-- **Frequency**: Analysis every 2 seconds
-- **Models**: DeepFace emotion recognition
-- **Output**: Emotion, confidence score, facial landmarks
-- **History**: Last 10 emotion states tracked
+### 🎤 Continuous Audio Processing
+- **Voice Activity Detection**: Silero VAD running at 10Hz (100ms intervals)
+- **Smart Recording**: Automatic start/stop based on speech detection
+- **Buffer Management**: 500ms rolling buffer to capture complete words
+- **Silence Detection**: 1s pause stops recording, 3s pause completes answer
+- **Groq Integration**: Free Whisper-large-v3 transcription with sub-second latency
 
-### Performance Feedback
-- **Real-time Scoring**: Instant evaluation of responses
-- **Visual Feedback**: Live performance overlays
-- **Adaptive Questions**: Dynamic difficulty adjustment
-- **Progress Tracking**: Session-based improvement metrics
+### 📊 Live Emotion Analysis
+- **Frequency**: Facial analysis every 2 seconds during active session
+- **Models**: DeepFace emotion recognition with confidence scoring
+- **Output**: Real-time emotion state, confidence, and facial landmarks
+- **History**: Continuous tracking throughout interview session
+- **Integration**: Synchronized with speech analysis for comprehensive feedback
+
+### ⚡ Performance Optimization
+- **Threading**: Concurrent audio processing and VAD analysis
+- **Async Processing**: Non-blocking I/O for real-time responsiveness
+- **Local VAD**: Zero-latency voice detection without API calls
+- **Smart Chunking**: Optimal audio segment sizes for Groq API
+- **Memory Efficient**: Rolling buffers prevent memory accumulation
 
 ## Interview Question Types
 
@@ -269,44 +363,99 @@ Modify [`app/templates/interview.html`](app/templates/interview.html) for interv
 
 ### Common Issues
 
-1. **Camera Access Denied**
-   - Ensure browser permissions are granted
-   - Check HTTPS requirements for WebRTC
-   - Verify camera is not in use by other applications
+1. **Groq API Issues**
+   - Verify `GROQ_API_KEY` is set in `.env` file
+   - Check Groq API rate limits (free tier limitations)
+   - Ensure internet connectivity for API calls
+   - Test with: `curl -H "Authorization: Bearer $GROQ_API_KEY" https://api.groq.com/openai/v1/models`
 
-2. **API Connection Issues**
-   - Verify API keys in `.env` file
-   - Check internet connectivity
-   - Confirm API rate limits not exceeded
+2. **Audio System Problems**
+   - **Microphone Access**: Ensure browser permissions granted
+   - **Device Detection**: Run `/test_audio` endpoint to verify audio devices
+   - **VAD Model Loading**: Check Silero VAD download: `torch.hub.load('snakers4/silero-vad', 'silero_vad')`
+   - **Audio Quality**: Ensure microphone is not muted and has adequate volume
 
 3. **Emotion Analysis Not Working**
-   - Ensure adequate lighting for facial recognition
-   - Check DeepFace model installation
-   - Verify camera feed quality
+   - Verify adequate lighting for facial recognition
+   - Check DeepFace model installation and dependencies
+   - Ensure webcam permissions are granted
+   - Test camera feed quality and positioning
+
+4. **Performance Issues**
+   - **Slow Response**: Check internet connection for Groq API calls
+   - **High CPU Usage**: Silero VAD processing is CPU-intensive
+   - **Memory Usage**: Monitor rolling buffer sizes in continuous processing
+   - **Threading Issues**: Ensure proper cleanup of audio threads
 
 ### Error Messages
 
+- **"GROQ_API_KEY not found"**: Add API key to `.env` file
+- **"Audio monitoring failed"**: Check microphone permissions and device availability
+- **"VAD model loading failed"**: Install PyTorch and download Silero model
 - **"Camera permission required"**: Grant browser camera access
-- **"API key not found"**: Check `.env` configuration
-- **"Analysis failed"**: Verify DeepFace installation and model files
+- **"Interview not initialized"**: Call `/start_interview` endpoint first
+
+### Debug Mode
+
+```bash
+# Enable detailed logging
+uvicorn app.main:app --log-level debug --reload
+
+# Test individual components
+python -c "from app.src.utils import ModernAudioHandler; print('Audio handler ready')"
+```
 
 ## Development
 
 ### Running in Development Mode
 
 ```bash
-export FLASK_ENV=development
-export FLASK_DEBUG=True
-cd app
-python main.py
+# With auto-reload for development
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+# Or using the FastAPI development server
+python app/main.py
+```
+
+### Testing the Audio System
+
+```bash
+# Test Groq API connection
+python -c "from groq import Groq; print('Groq client ready')"
+
+# Test Silero VAD model
+python -c "import torch; torch.hub.load('snakers4/silero-vad', 'silero_vad')"
+
+# Test audio devices
+curl -X POST http://localhost:8000/test_audio
 ```
 
 ### Adding New Features
 
-1. **New API Endpoints**: Add to [`app/routers/`](app/routers/)
-2. **Business Logic**: Implement in [`app/services/`](app/services/)
-3. **Frontend Updates**: Modify templates in [`app/templates/`](app/templates/)
-4. **Landing Page**: Update [`landing/index.html`](landing/index.html)
+1. **New API Endpoints**: Add to [`app/main.py`](app/main.py)
+2. **Audio Processing**: Modify [`app/src/utils.py`](app/src/utils.py) ModernAudioHandler class
+3. **Frontend Updates**: Update templates in [`app/templates/`](app/templates/)
+4. **Landing Page**: Modify [`landing/index.html`](landing/index.html)
+5. **AI Integration**: Update LLM logic in [`app/src/llm.py`](app/src/llm.py)
+
+### Architecture Components
+
+```python
+# Main FastAPI application
+app/main.py
+
+# Core interview logic and audio processing
+app/src/utils.py:
+  - InterviewSession: Session management
+  - ModernAudioHandler: Groq + Silero VAD integration
+  - EmotionAnalyzer: DeepFace integration
+  - InterviewScorer: LLM-based answer evaluation
+  - ReportGenerator: Comprehensive reporting
+
+# AI model integrations
+app/src/llm.py: Gemini LLM integration
+app/src/deepface.py: Facial emotion analysis
+```
 
 ## Contributing
 
@@ -322,24 +471,42 @@ This project is for educational and research purposes. Please ensure compliance 
 
 ## Future Enhancements
 
-- [ ] Advanced voice analysis integration
-- [ ] Multi-language interview support
-- [ ] HR system integrations
-- [ ] Advanced analytics dashboard
-- [ ] Mobile application development
-- [ ] Interview scheduling system
-- [ ] Candidate comparison tools
-- [ ] Custom branding options
-- [ ] Advanced reporting templates
-- [ ] Machine learning model improvements
+- [ ] **Enhanced Audio Processing**
+  - Multi-language speech recognition support
+  - Real-time accent and pronunciation analysis
+  - Voice stress detection and coaching
+  - Background noise cancellation
 
-## Support
+- [ ] **Advanced AI Features**
+  - GPT-4 integration for enhanced question generation
+  - Custom AI interviewer personalities
+  - Industry-specific interview templates
+  - Behavioral pattern recognition
 
-For issues and questions:
-1. Check the troubleshooting section above
-2. Review the [issues](issues) in the repository
-3. Contact the development team
+- [ ] **Performance Optimizations**
+  - WebAssembly VAD processing for browser-side detection
+  - Edge computing deployment options
+  - Real-time model optimization
+  - Reduced latency through model quantization
+
+- [ ] **Enterprise Features**
+  - Multi-tenant support and user management
+  - Advanced analytics dashboard
+  - HR system integrations (ATS, HRIS)
+  - White-label customization options
+
+- [ ] **Platform Expansion**
+  - Mobile application (iOS/Android)
+  - Desktop application with offline capabilities
+  - Progressive Web App (PWA) support
+  - Multi-platform deployment guides
+
+- [ ] **Collaboration Tools**
+  - Interview scheduling system
+  - Candidate comparison and ranking
+  - Team collaboration features
+  - Interview replay and review system
 
 ---
 
-*This AI Interview Coach is designed to enhance interview preparation and should be used as a supplementary tool in the hiring process. Human judgment remains essential in final hiring decisions.*
+*This AI Interview Coach leverages cutting-edge free APIs and local processing to deliver enterprise-grade interview preparation at $0 cost. The system is designed for educational and professional development purposes.*
