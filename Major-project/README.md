@@ -21,8 +21,22 @@ AI-powered mock interview platform with real-time speech recognition, emotion an
 ### Installation
 
 1. **Clone the repository**
+
+Option A — Full clone
 ```bash
-git clone <repo-url>
+git clone https://github.com/zer-art/Academics.git
+cd Academics/Major-project
+```
+
+Option B — Sparse clone (recommended if you only need the `Major-project` folder)
+Requires Git >= 2.25
+```bash
+# Clone repository with sparse support (only downloads required files)
+git clone --filter=blob:none --sparse https://github.com/zer-art/Academics.git
+cd Academics
+# Initialize and set sparse-checkout to only include Major-project
+git sparse-checkout init --cone
+git sparse-checkout set Major-project
 cd Major-project
 ```
 
