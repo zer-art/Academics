@@ -153,6 +153,7 @@ On macOS/Linux, ensure no other applications are blocking audio access.
 4. **Answer via voice** - Speak your answers (microphone required)
 5. **Real-time feedback** - Camera tracks facial expressions for confidence analysis
 6. **View report** - Get comprehensive performance analysis at the end
+7. **Download PDF** - On the Report page click **Download Report** to save a PDF copy of your interview analysis (client-side PDF generation).
 
 ### Tips for Best Results
 - Use in a quiet environment for better speech recognition
