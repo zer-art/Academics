@@ -6,6 +6,7 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from app.src.utils import InterviewController
 import base64
+import json
 import numpy as np
 from PIL import Image
 from io import BytesIO
