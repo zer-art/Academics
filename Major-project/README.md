@@ -12,19 +12,33 @@ AI-powered mock interview platform with real-time speech recognition, emotion an
 
 ## ⚡ Performance & Architecture
 
-Built for real-time interaction, AIVOX uses a geometry-based confidence analysis system (MediaPipe) instead of traditional heavy CNNs (DeepFace), resulting in **18x faster processing**.
+Built for real-time interaction, AIVOX uses a geometry-based confidence analysis system (MediaPipe) instead of traditional heavy CNNs, resulting in **19x faster processing**.
 
-| Metric | Traditional (DeepFace) | AIVOX (MediaPipe) | Improvement |
-|--------|------------------------|-------------------|-------------|
-| **Latency** | 450ms | **25ms** | 🚀 **18x Faster** |
-| **FPS** | 2-3 FPS | **30+ FPS** | ⏩ **Real-time** |
-| **CPU Usage** | 90% | **~15%** | 🔋 **Efficient** |
-| **Model Size** | 2.5 GB | **50 MB** | 📦 **50x Smaller** |
+| Metric | Traditional CNN (ResNet50) | AIVOX (MediaPipe) | Improvement |
+|--------|----------------------------|-------------------|-------------|
+| **Latency** | 31.0ms | **1.6ms** | 🚀 **19.1x Faster** |
+| **FPS** | 32 FPS | **616 FPS** | ⏩ **High Frequency** |
+| **CPU Usage** | 155% | **113%** | 🔋 **42% Less Load** |
+| **Memory** | 881 MB | **766 MB** | 📦 **1.2x Smaller** |
+
+### 🔬 Benchmarking Methodology
+
+Results were measured on **Apple Silicon (ARM64)** using the included `benchmark_cnn_vs_mediapipe.py` script.
+- **Hardware:** Apple Silicon (macOS Darwin 24.6.0)
+- **Baseline:** ResNet50 (PyTorch) running on CPU.
+- **AIVOX:** MediaPipe FaceMesh running on CPU.
+- **Method:** Average over 100 runs after 10 warm-up iterations.
+
+```bash
+# Verify these results on your machine
+conda activate major
+python benchmark_cnn_vs_mediapipe.py
+```
 
 ### Key Technical Highlights
 - **Groq LPU Inference:** Utilizes Groq's LPU for near-instant speech-to-text processing.
 - **Geometric Analysis:** Uses 468 3D facial landmarks for transparent, mathematical confidence scoring (Head Pose, Eye Contact, Smile Elevation) rather than "black box" neural networks.
-- **Client-Side Optimization:** Heavy lifting is done efficiently, allowing smooth performance even on standard hardware (tested on M1 MacBook Pro).
+- **Client-Side Optimization:** Heavy lifting is done efficiently, allowing smooth performance even on standard hardware.
 
 ## 🚀 Quick Start
 
