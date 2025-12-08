@@ -6,11 +6,16 @@ import threading
 import time
 
 # Load Model
-json_file = open("S:/Github/Minor Project/MINOR-PROJECT/dev/app/model/model.json", "r")
+# Load Model
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, 'model')
+
+json_file = open(os.path.join(MODEL_PATH, "model.json"), "r")
 model_json = json_file.read()
 json_file.close()
 model = model_from_json(model_json)
-model.load_weights("S:/Github/Minor Project/MINOR-PROJECT/dev/app/model/model.h5")
+model.load_weights(os.path.join(MODEL_PATH, "model.h5"))
 
 actions = ['D', 'E', 'H', 'L', 'O', 'R', 'W']
 threshold = 0.5

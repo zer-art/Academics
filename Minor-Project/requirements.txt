@@ -1,0 +1,9 @@
+django
+tensorflow
+mediapipe
+opencv-python
+pandas
+textdistance
+scikit-learn
+keras
+numpy

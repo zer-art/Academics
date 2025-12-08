@@ -4,7 +4,9 @@ from collections import Counter
 import re
 
 word = []
-with open("S:/Github/MP_1-a/autocorrect book.txt", 'r',encoding="utf-8" ) as f:
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(BASE_DIR, "autocorrect book.txt"), 'r',encoding="utf-8" ) as f:
      data = f.read()
      data = data.lower()
      data = re.sub(r'[^a-zA-Z0-9\s]', '', data)  # Remove punctuation
