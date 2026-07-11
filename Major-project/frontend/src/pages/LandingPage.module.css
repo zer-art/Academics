@@ -1,0 +1,57 @@
+.page { min-height: 100dvh; position: relative; overflow: hidden; }
+
+/* Ambient orbs */
+.orb1, .orb2, .orb3 {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float 8s ease-in-out infinite;
+}
+.orb1 { width: 500px; height: 500px; top: -120px; left: -120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); }
+.orb2 { width: 400px; height: 400px; top: 40%; right: -100px; background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%); animation-delay: -3s; }
+.orb3 { width: 350px; height: 350px; bottom: -80px; left: 35%; background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%); animation-delay: -5s; }
+
+/* Logo */
+.logo { display: flex; align-items: center; font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+
+/* Hero */
+.hero { padding-top: 100px; padding-bottom: 60px; position: relative; z-index: 1; }
+.heroBadge { margin-bottom: 28px; font-size: 0.85rem; }
+.heroTitle { margin-bottom: 24px; letter-spacing: -0.03em; }
+.heroSubtitle { font-size: 1.1rem; max-width: 580px; margin: 0 auto 40px; line-height: 1.7; }
+.heroCta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.desktopBr { display: none; }
+@media (min-width: 768px) { .desktopBr { display: block; } }
+
+/* Domain pills */
+.domainPills { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.domainPill { padding: 8px 18px; font-size: 0.85rem; font-weight: 500; transition: all var(--transition); cursor: default; }
+.domainPill:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+/* Stats bar */
+.statsBar { padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); position: relative; z-index: 1; }
+.statsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+.statVal { font-family: var(--font-display); font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-light), #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.statLabel { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+@media (max-width: 640px) { .statsGrid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Features grid */
+.featuresGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.featureCard { padding: 28px; transition: transform var(--transition), box-shadow var(--transition); }
+.featureCard:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+.featureIcon { font-size: 2rem; margin-bottom: 16px; }
+@media (max-width: 900px) { .featuresGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .featuresGrid { grid-template-columns: 1fr; } }
+
+/* CTA Banner */
+.ctaBanner {
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.05));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+
+/* Footer */
+.footer { padding: 40px 0; position: relative; z-index: 1; border-top: 1px solid var(--border); }

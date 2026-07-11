@@ -1,0 +1,65 @@
+.page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.orb1, .orb2 {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.orb1 { width: 500px; height: 500px; top: -100px; left: -150px; background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%); }
+.orb2 { width: 400px; height: 400px; bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%); }
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  padding: 48px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+.logoIcon { font-size: 1.5rem; }
+.logoText { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; }
+
+.title { text-align: center; margin-bottom: 10px; font-size: 1.8rem; }
+.subtitle { text-align: center; font-size: 0.95rem; line-height: 1.6; margin-bottom: 32px; }
+
+.googleBtn {
+  width: 100%;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px;
+  font-size: 0.95rem;
+  border-color: rgba(255,255,255,0.15);
+  margin-bottom: 24px;
+  transition: all var(--transition);
+}
+.googleBtn:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); transform: translateY(-1px); }
+
+.dividerRow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.dividerLine { flex: 1; height: 1px; background: var(--border); }
+.dividerText { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
+
+.featureList { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; }
+.featureItem { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-secondary); }
+.featureCheck { color: var(--success); font-size: 0.8rem; flex-shrink: 0; }
+
+.terms { font-size: 0.78rem; text-align: center; color: var(--text-muted); line-height: 1.6; }
+.terms a { color: var(--accent-light); }
+
+.backBtn { position: fixed; top: 20px; left: 20px; z-index: 10; }

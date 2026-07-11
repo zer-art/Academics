@@ -1,0 +1,45 @@
+[project]
+name = "aivox"
+version = "0.1.0"
+description = "AI-powered mock interview PWA — real-time feedback with MediaPipe + Gemini"
+authors = ["AIVOX Team"]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "osx-64", "linux-64"]
+
+# ─── System Dependencies ──────────────────────────────────────────────────────
+[dependencies]
+python = ">=3.11,<3.12"
+nodejs = ">=20.0,<21"
+pnpm = ">=9.0"
+git = "*"
+
+# ─── Python API Dependencies (pip/PyPI) ───────────────────────────────────────
+[pypi-dependencies]
+fastapi = ">=0.110.0"
+uvicorn = { version = ">=0.28.0", extras = ["standard"] }
+google-genai = ">=1.0.0"
+groq = ">=0.9.0"
+python-dotenv = ">=1.0.0"
+pydantic = ">=2.6.0"
+python-multipart = ">=0.0.9"
+httpx = ">=0.27.0"
+firebase-admin = ">=6.4.0"
+
+# ─── Dev Tasks ────────────────────────────────────────────────────────────────
+[tasks]
+# Backend
+api-dev    = "uvicorn api.index:app --reload --port 8000 --env-file .env"
+api-start  = "uvicorn api.index:app --port 8000"
+
+# Frontend (run from /frontend dir)
+fe-install = "pnpm --dir frontend install"
+fe-dev     = "pnpm --dir frontend run dev"
+fe-build   = "pnpm --dir frontend run build"
+fe-preview = "pnpm --dir frontend run preview"
+
+# Combined dev — starts both backend + frontend
+dev = { cmd = "uvicorn api.index:app --reload --port 8000 --env-file .env & pnpm --dir frontend run dev", description = "Run full dev stack" }
+
+# Utilities
+lint   = "pnpm --dir frontend run lint"
+typecheck = "pnpm --dir frontend run typecheck"

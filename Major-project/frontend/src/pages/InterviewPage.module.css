@@ -1,0 +1,88 @@
+.page { min-height: 100dvh; background: var(--bg-primary); }
+
+.grid { display: grid; grid-template-columns: 380px 1fr; gap: 24px; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+.leftCol, .rightCol { display: flex; flex-direction: column; gap: 16px; }
+
+/* Camera */
+.videoCard { position: relative; overflow: hidden; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; padding: 0; }
+.video { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); display: block; }
+.noCam { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-muted); }
+.noCam span { font-size: 2.5rem; }
+
+.hudOverlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 12px 16px;
+  background: linear-gradient(transparent, rgba(10,10,20,0.9));
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+.hudRow { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 0.85rem; }
+.hudLabel { color: var(--text-muted); }
+.hudBar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
+.hudBar > div { height: 100%; border-radius: 2px; transition: width 300ms ease; }
+.hudMini { display: flex; gap: 16px; font-size: 0.75rem; color: var(--text-muted); }
+
+/* AI Avatar */
+.aiCard { display: flex; flex-direction: column; align-items: center; padding: 24px; gap: 12px; }
+.aiAvatar { position: relative; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+.aiRing {
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  opacity: 0.5;
+}
+.speaking .aiRing { animation: pulse-ring 1s ease-in-out infinite; opacity: 1; }
+.aiFace {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+}
+.aiEyes { display: flex; gap: 12px; }
+.aiEye { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.9); }
+.speaking .aiEye { animation: wave 0.6s ease-in-out infinite alternate; }
+.aiMouth { width: 22px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.6); transition: all 300ms; }
+.aiMouthOpen { height: 10px; border-radius: 0 0 8px 8px; }
+
+.waveGroup { display: flex; align-items: center; gap: 4px; height: 24px; }
+.wave { width: 4px; height: 16px; background: var(--accent-light); border-radius: 2px; animation: wave 0.8s ease-in-out infinite; }
+
+.aiLabel { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Panels */
+.panel { padding: 20px 24px; }
+.panelTitle { font-size: 1rem; margin-bottom: 14px; }
+.panelSubtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.domainGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.domainBtn {
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+}
+.domainBtn:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.domainBtnActive { background: var(--accent-glow) !important; border-color: var(--accent) !important; color: var(--accent-light) !important; }
+
+.questionHeader { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+.questionText { font-size: 1.05rem; font-weight: 500; color: var(--text-primary); line-height: 1.6; }
+
+.statusText { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+.recordingIndicator { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding: 8px 12px; background: var(--danger-glow); border-radius: var(--radius-md); }
+.recDot { width: 10px; height: 10px; border-radius: 50%; background: var(--danger); animation: recording-pulse 1s ease-in-out infinite; }
+
+.scoreCircle {
+  width: 52px; height: 52px; flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
+}
+.feedbackTag { font-size: 0.82rem; margin-top: 6px; }

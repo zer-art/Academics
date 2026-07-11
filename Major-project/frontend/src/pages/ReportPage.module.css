@@ -1,0 +1,33 @@
+.page { min-height: 100dvh; background: var(--bg-primary); }
+
+.scoreHero { display: flex; gap: 40px; align-items: center; padding: 40px 48px; margin-bottom: 32px; flex-wrap: wrap; }
+.scoreRingWrap { position: relative; flex-shrink: 0; }
+.scoreCenter { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.scoreNum { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; line-height: 1; }
+.scoreMax { font-size: 0.75rem; color: var(--text-muted); }
+.scoreInfo { flex: 1; min-width: 220px; }
+.scoreBreakdown { display: flex; flex-direction: column; gap: 10px; }
+.breakdownItem { display: flex; align-items: center; gap: 12px; }
+.breakdownLabel { font-size: 0.85rem; color: var(--text-muted); width: 110px; flex-shrink: 0; }
+.breakdownVal { font-weight: 600; font-size: 0.9rem; width: 32px; text-align: right; }
+
+.chartsGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 640px) { .chartsGrid { grid-template-columns: 1fr; } }
+.chartCard { padding: 24px; }
+
+.sectionTitle { font-size: 1.2rem; color: var(--text-primary); }
+
+.qaList { display: flex; flex-direction: column; gap: 16px; }
+.qaCard { padding: 24px; }
+.qaHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.qaQuestion { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 8px; line-height: 1.5; }
+.qaAnswer { font-size: 0.88rem; color: var(--text-muted); font-style: italic; margin-bottom: 10px; line-height: 1.5; }
+.qaFeedback { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+.qaTagsRow { display: flex; gap: 8px; flex-wrap: wrap; }
+.tagGreen { background: var(--success-glow); color: var(--success); padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; }
+.tagAmber { background: var(--warning-glow); color: var(--warning); padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; }
+
+.recList { display: flex; flex-direction: column; gap: 10px; }
+.recItem { padding: 16px 20px; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
+
+.actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 48px; }

@@ -15,3 +15,4 @@ logs/*
 assets/
 assets/*
 *.pdf
+benchmark_cnn_vs_mediapipe.py.*
