@@ -44,7 +44,7 @@ flowchart TD
         Router <--> Gemini[Google Gemini Service]
     end
 
-    subgraph FirebaseCloud [Firebase Cloud Services (Optional)]
+    subgraph FirebaseCloud ["Firebase Cloud Services (Optional)"]
         Auth[Google Sign-In]
         Firestore[Firestore User Database]
     end
